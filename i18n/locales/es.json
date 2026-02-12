@@ -1,0 +1,250 @@
+{
+  "meta": {
+    "title": "The Capibara Web | Ingeniería de Software & Soluciones de IA",
+    "description": "Transformamos ideas complejas en infraestructuras digitales escalables. Más de 12 años desarrollando software, IA y soluciones SaaS para empresas en México, EE. UU. y Canadá."
+  },
+  "nav": {
+    "home": "Inicio",
+    "services": "Servicios",
+    "projects": "Proyectos",
+    "training": "Capacitación IA",
+    "tech": "Tecnologías",
+    "faq": "FAQ",
+    "contact": "Contacto",
+    "schedule": "Agendar Consulta"
+  },
+  "hero": {
+    "badge": "Más de 12 años de experiencia en ingeniería de software",
+    "title": "Software Engineering",
+    "titleHighlight": "& AI Solutions",
+    "subtitle": "Transformamos ideas complejas en infraestructuras digitales escalables. Desde SaaS médicos hasta portales de empleo internacionales, diseñamos tecnología que genera impacto real.",
+    "cta": "Agendar Consulta Gratuita",
+    "ctaSecondary": "Explorar Servicios"
+  },
+  "services": {
+    "badge": "Lo que hacemos",
+    "title": "Servicios Especializados",
+    "subtitle": "Como expertos en MEVN Stack con más de 12 años de trayectoria, ofrecemos soluciones digitales de alto rendimiento para empresas que buscan escalar.",
+    "items": [
+      {
+        "title": "Desarrollo de Software a Medida",
+        "description": "Arquitecturas robustas con Vue.js, Node.js y AWS. Creamos sistemas escalables que procesan millones de transacciones, como ecosistemas IoT y portales de empleo internacionales.",
+        "tags": ["Vue.js", "Node.js", "AWS", "API REST"]
+      },
+      {
+        "title": "Implementación y Capacitación en IA",
+        "description": "Integración de OpenAI API y modelos de IA personalizados. Capacitamos a tu equipo para automatizar el 40% de tareas repetitivas y optimizar flujos de trabajo empresariales.",
+        "tags": ["OpenAI", "Machine Learning", "Automatización"]
+      },
+      {
+        "title": "Soluciones Verticales Especializadas",
+        "description": "SaaS para el sector salud (HealthTech) y educativo (EdTech). Plataformas como Medicynia y Doctor Digital que gestionan redes de especialistas médicos en México.",
+        "tags": ["HealthTech", "EdTech", "SaaS"]
+      },
+      {
+        "title": "Migración Cloud y Rendimiento",
+        "description": "Migración segura a AWS con optimización de Core Web Vitals. Reducimos tiempos de carga en un 60% y garantizamos disponibilidad del 99.9% para operaciones críticas.",
+        "tags": ["AWS", "DevOps", "Performance"]
+      }
+    ]
+  },
+  "showcase": {
+    "badge": "Proyectos Destacados",
+    "title": "Casos de Éxito",
+    "subtitle": "Hemos desarrollado sistemas para empresas en EE. UU., portales nacionales de empleo en Canadá y SaaS médicos exitosos que impactan a miles de usuarios diariamente.",
+    "projects": [
+      {
+        "title": "Agtronix",
+        "category": "IoT & Inteligencia Artificial",
+        "description": "Ecosistema IoT completo para el monitoreo inteligente de más de 1 millón de plantas. Integración de sensores, análisis predictivo con IA y dashboard en tiempo real para optimizar cultivos a gran escala.",
+        "metric": "+1M",
+        "metricLabel": "plantas monitoreadas",
+        "tags": ["IoT", "IA", "Vue.js", "Node.js"]
+      },
+      {
+        "title": "Education America",
+        "category": "Portal de Empleo Internacional",
+        "description": "Portal de empleo líder en Estados Unidos que conecta a profesionales con oportunidades laborales. Sistema de matching inteligente, gestión de candidatos y panel administrativo avanzado.",
+        "metric": "EE.UU.",
+        "metricLabel": "alcance nacional",
+        "tags": ["SaaS", "Vue.js", "MariaDB", "AWS"]
+      },
+      {
+        "title": "Medicynia",
+        "category": "HealthTech SaaS",
+        "description": "Plataforma SaaS de gestión médica integral en México. Expediente clínico electrónico, agenda inteligente, telemedicina y facturación automatizada para consultorios y clínicas.",
+        "metric": "SaaS",
+        "metricLabel": "gestión médica líder",
+        "tags": ["HealthTech", "SaaS", "Vue.js", "Node.js"]
+      },
+      {
+        "title": "Doctor Digital",
+        "category": "Red de Plataformas Médicas",
+        "description": "Red de más de 10 plataformas digitales especializadas para médicos de distintas especialidades. Cada plataforma adaptada al flujo de trabajo específico de cada especialidad médica.",
+        "metric": "+10",
+        "metricLabel": "plataformas especializadas",
+        "tags": ["HealthTech", "Multi-plataforma", "SaaS"]
+      }
+    ],
+    "viewProject": "Ver proyecto"
+  },
+  "training": {
+    "badge": "Capacitación Empresarial",
+    "title": "IA para Empresas",
+    "subtitle": "Enseñamos a tu equipo a dominar la inteligencia artificial para optimizar flujos de trabajo y multiplicar la productividad.",
+    "description": "Nuestro programa de capacitación en IA está diseñado para equipos que quieren integrar herramientas de inteligencia artificial en sus operaciones diarias. Implementamos soluciones reales que generan resultados medibles desde la primera semana.",
+    "features": [
+      {
+        "title": "Automatización de Procesos",
+        "description": "Identificamos tareas repetitivas y las automatizamos con IA, liberando hasta un 40% del tiempo de tu equipo."
+      },
+      {
+        "title": "Integración de OpenAI",
+        "description": "Implementamos ChatGPT y APIs de OpenAI directamente en tus herramientas de trabajo para asistencia inteligente."
+      },
+      {
+        "title": "Análisis Predictivo",
+        "description": "Convertimos tus datos en predicciones accionables para tomar mejores decisiones de negocio."
+      },
+      {
+        "title": "Capacitación Práctica",
+        "description": "Workshops hands-on donde tu equipo aprende a usar IA con casos reales de tu industria."
+      }
+    ],
+    "cta": "Solicitar Programa de Capacitación"
+  },
+  "tech": {
+    "badge": "Stack Tecnológico",
+    "title": "Tecnologías que Dominamos",
+    "subtitle": "Trabajamos con las herramientas más poderosas y confiables del ecosistema de desarrollo moderno."
+  },
+  "trust": {
+    "badge": "Confianza",
+    "title": "Empresas que Confían en Nosotros",
+    "subtitle": "Colaboramos con empresas innovadoras en México, Estados Unidos y Canadá."
+  },
+  "beforeAfter": {
+    "badge": "Impacto Real",
+    "title": "Antes y Después de Implementar IA",
+    "subtitle": "Resultados medibles que hemos logrado con nuestros clientes al integrar soluciones de inteligencia artificial en sus operaciones.",
+    "headers": {
+      "aspect": "Aspecto",
+      "before": "Antes",
+      "after": "Después con IA"
+    },
+    "rows": [
+      {
+        "aspect": "Procesamiento de datos",
+        "before": "8 horas de trabajo manual",
+        "after": "45 minutos automatizados"
+      },
+      {
+        "aspect": "Errores en captura",
+        "before": "12% de error humano",
+        "after": "0.5% con validación IA"
+      },
+      {
+        "aspect": "Atención al cliente",
+        "before": "40 consultas atendidas por día",
+        "after": "200+ consultas con chatbot IA"
+      },
+      {
+        "aspect": "Costos operativos mensuales",
+        "before": "$15,000 MXN / mes",
+        "after": "$4,500 MXN / mes"
+      },
+      {
+        "aspect": "Tiempo de respuesta",
+        "before": "24 a 48 horas",
+        "after": "Menos de 5 minutos"
+      }
+    ]
+  },
+  "faq": {
+    "badge": "Preguntas Frecuentes",
+    "title": "Preguntas sobre Implementación de IA y Desarrollo",
+    "subtitle": "Resolvemos las dudas más comunes sobre nuestros servicios de desarrollo de software y consultoría de IA.",
+    "items": [
+      {
+        "question": "¿Qué tecnologías utilizan para el desarrollo de software?",
+        "answer": "Utilizamos el stack MEVN (MariaDB/MongoDB, Express, Vue.js, Node.js) combinado con servicios de AWS para infraestructura cloud. También integramos OpenAI API, Tailwind CSS y Nuxt para aplicaciones de alto rendimiento. Cada proyecto se diseña con arquitectura escalable y siguiendo estándares de seguridad empresarial."
+      },
+      {
+        "question": "¿Cómo ayuda la IA a mi empresa?",
+        "answer": "La IA de The Capibara Web automatiza el 40% de tus tareas repetitivas, desde procesamiento de datos hasta atención al cliente con chatbots inteligentes. Implementamos soluciones de OpenAI que se integran directamente en tus flujos de trabajo existentes, reduciendo costos operativos hasta en un 70% y mejorando los tiempos de respuesta de días a minutos."
+      },
+      {
+        "question": "¿Ofrecen soluciones SaaS para el sector salud?",
+        "answer": "Sí, somos especialistas en HealthTech. Hemos desarrollado plataformas como Medicynia (SaaS de gestión médica) y Doctor Digital (red de más de 10 plataformas para especialistas). Nuestras soluciones incluyen expediente clínico electrónico, telemedicina, agenda inteligente y facturación automatizada, todo cumpliendo con normativas de salud en México."
+      },
+      {
+        "question": "¿Cuánto tiempo toma desarrollar una plataforma personalizada?",
+        "answer": "El tiempo varía según la complejidad. Un MVP funcional típicamente toma de 8 a 12 semanas. Plataformas SaaS completas con múltiples módulos pueden tomar de 4 a 6 meses. Trabajamos con metodologías ágiles (Scrum) con entregas incrementales cada 2 semanas para que puedas ver progreso real desde el inicio."
+      },
+      {
+        "question": "¿Trabajan con empresas internacionales?",
+        "answer": "Sí, tenemos 12 años de experiencia trabajando con empresas en México, Estados Unidos y Canadá. Hemos desarrollado portales de empleo nacionales en EE. UU. (Education America) y sistemas IoT de escala industrial (Agtronix). Nuestro equipo trabaja en zona horaria flexible y con comunicación bilingüe español-inglés."
+      },
+      {
+        "question": "¿Qué incluye su servicio de capacitación en IA?",
+        "answer": "Nuestro programa incluye: diagnóstico de procesos automatizables, workshops prácticos con herramientas de OpenAI, implementación guiada de soluciones IA en tu operación diaria y soporte continuo post-capacitación. Los equipos aprenden a usar IA con casos reales de su industria, no solo teoría. Resultados medibles desde la primera semana de implementación."
+      },
+      {
+        "question": "¿Cómo mejoran el posicionamiento web de mi empresa?",
+        "answer": "Implementamos estrategias SEO, AEO y LLMO desde la arquitectura del proyecto. Utilizamos datos estructurados Schema.org, renderizado SSG/SSR para rastreadores, Core Web Vitals optimizados y contenido semántico que permite a motores de búsqueda e IAs generativas identificar tu marca como autoridad en tu sector."
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Contacto",
+    "title": "Hablemos de Tu Proyecto",
+    "subtitle": "Agenda una consulta gratuita y descubre cómo podemos transformar tu negocio con tecnología de vanguardia.",
+    "form": {
+      "name": "Nombre completo",
+      "email": "Correo electrónico",
+      "phone": "Teléfono (opcional)",
+      "message": "Cuéntanos sobre tu proyecto",
+      "submit": "Enviar Mensaje",
+      "sending": "Enviando...",
+      "success": "Mensaje enviado correctamente. Te contactaremos pronto.",
+      "error": "Error al enviar. Intenta de nuevo o contáctanos por WhatsApp."
+    },
+    "whatsapp": "Escribir por WhatsApp",
+    "info": {
+      "title": "Información de Contacto",
+      "email": "contacto{'@'}thecapibaraweb.mx",
+      "phone": "+52 618 183 5957",
+      "location": "Durango, México"
+    }
+  },
+  "footer": {
+    "description": "Factoría de Soluciones Digitales. Más de 12 años transformando ideas complejas en infraestructuras digitales escalables para empresas en México, EE. UU. y Canadá.",
+    "sections": {
+      "services": "Servicios",
+      "company": "Empresa",
+      "legal": "Legal"
+    },
+    "links": {
+      "software": "Desarrollo de Software",
+      "ai": "Implementación de IA",
+      "healthtech": "Soluciones HealthTech",
+      "cloud": "Migración Cloud",
+      "about": "Sobre Nosotros",
+      "projects": "Proyectos",
+      "training": "Capacitación IA",
+      "contact": "Contacto",
+      "privacy": "Aviso de Privacidad",
+      "terms": "Términos y Condiciones"
+    },
+    "copyright": "The Capibara Web. Todos los derechos reservados.",
+    "location": "Durango, México"
+  },
+  "privacy": {
+    "title": "Aviso de Privacidad",
+    "lastUpdated": "Última actualización: Febrero 2026"
+  },
+  "terms": {
+    "title": "Términos y Condiciones",
+    "lastUpdated": "Última actualización: Febrero 2026"
+  }
+}

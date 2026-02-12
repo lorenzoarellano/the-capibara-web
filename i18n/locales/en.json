@@ -1,0 +1,250 @@
+{
+  "meta": {
+    "title": "The Capibara Web | Software Engineering & AI Solutions",
+    "description": "We transform complex ideas into scalable digital infrastructures. Over 12 years developing software, AI, and SaaS solutions for companies in Mexico, the U.S., and Canada."
+  },
+  "nav": {
+    "home": "Home",
+    "services": "Services",
+    "projects": "Projects",
+    "training": "AI Training",
+    "tech": "Technologies",
+    "faq": "FAQ",
+    "contact": "Contact",
+    "schedule": "Book a Call"
+  },
+  "hero": {
+    "badge": "Over 12 years of software engineering experience",
+    "title": "Software Engineering",
+    "titleHighlight": "& AI Solutions",
+    "subtitle": "We transform complex ideas into scalable digital infrastructures. From medical SaaS to international job portals, we design technology that delivers real impact.",
+    "cta": "Book a Free Consultation",
+    "ctaSecondary": "Explore Services"
+  },
+  "services": {
+    "badge": "What we do",
+    "title": "Specialized Services",
+    "subtitle": "As MEVN Stack experts with over 12 years of experience, we deliver high-performance digital solutions for companies that need to scale.",
+    "items": [
+      {
+        "title": "Custom Software Development",
+        "description": "Robust architectures with Vue.js, Node.js, and AWS. We build scalable systems that process millions of transactions, from IoT ecosystems to international job portals.",
+        "tags": ["Vue.js", "Node.js", "AWS", "REST API"]
+      },
+      {
+        "title": "AI Implementation & Training",
+        "description": "OpenAI API integration and custom AI models. We train your team to automate 40% of repetitive tasks and optimize enterprise workflows.",
+        "tags": ["OpenAI", "Machine Learning", "Automation"]
+      },
+      {
+        "title": "Specialized Vertical Solutions",
+        "description": "SaaS for the healthcare (HealthTech) and education (EdTech) sectors. Platforms like Medicynia and Doctor Digital that manage networks of medical specialists in Mexico.",
+        "tags": ["HealthTech", "EdTech", "SaaS"]
+      },
+      {
+        "title": "Cloud Migration & Performance",
+        "description": "Secure AWS migration with Core Web Vitals optimization. We reduce load times by 60% and guarantee 99.9% availability for critical operations.",
+        "tags": ["AWS", "DevOps", "Performance"]
+      }
+    ]
+  },
+  "showcase": {
+    "badge": "Featured Projects",
+    "title": "Success Stories",
+    "subtitle": "We have developed systems for U.S. companies, national job portals in Canada, and successful medical SaaS platforms that impact thousands of users daily.",
+    "projects": [
+      {
+        "title": "Agtronix",
+        "category": "IoT & Artificial Intelligence",
+        "description": "Complete IoT ecosystem for intelligent monitoring of over 1 million plants. Sensor integration, predictive AI analysis, and real-time dashboard to optimize large-scale crops.",
+        "metric": "+1M",
+        "metricLabel": "plants monitored",
+        "tags": ["IoT", "AI", "Vue.js", "Node.js"]
+      },
+      {
+        "title": "Education America",
+        "category": "International Job Portal",
+        "description": "Leading job portal in the United States connecting professionals with employment opportunities. Intelligent matching system, candidate management, and advanced admin panel.",
+        "metric": "U.S.",
+        "metricLabel": "national reach",
+        "tags": ["SaaS", "Vue.js", "MariaDB", "AWS"]
+      },
+      {
+        "title": "Medicynia",
+        "category": "HealthTech SaaS",
+        "description": "Comprehensive medical management SaaS platform in Mexico. Electronic clinical records, intelligent scheduling, telemedicine, and automated billing for clinics and offices.",
+        "metric": "SaaS",
+        "metricLabel": "leading medical management",
+        "tags": ["HealthTech", "SaaS", "Vue.js", "Node.js"]
+      },
+      {
+        "title": "Doctor Digital",
+        "category": "Medical Platform Network",
+        "description": "Network of over 10 specialized digital platforms for doctors of different specialties. Each platform adapted to the specific workflow of each medical specialty.",
+        "metric": "+10",
+        "metricLabel": "specialized platforms",
+        "tags": ["HealthTech", "Multi-platform", "SaaS"]
+      }
+    ],
+    "viewProject": "View project"
+  },
+  "training": {
+    "badge": "Enterprise Training",
+    "title": "AI for Business",
+    "subtitle": "We teach your team to master artificial intelligence to optimize workflows and multiply productivity.",
+    "description": "Our AI training program is designed for teams that want to integrate artificial intelligence tools into their daily operations. We implement real solutions that generate measurable results from the first week.",
+    "features": [
+      {
+        "title": "Process Automation",
+        "description": "We identify repetitive tasks and automate them with AI, freeing up to 40% of your team's time."
+      },
+      {
+        "title": "OpenAI Integration",
+        "description": "We implement ChatGPT and OpenAI APIs directly into your work tools for intelligent assistance."
+      },
+      {
+        "title": "Predictive Analytics",
+        "description": "We turn your data into actionable predictions to make better business decisions."
+      },
+      {
+        "title": "Hands-on Training",
+        "description": "Hands-on workshops where your team learns to use AI with real cases from your industry."
+      }
+    ],
+    "cta": "Request Training Program"
+  },
+  "tech": {
+    "badge": "Tech Stack",
+    "title": "Technologies We Master",
+    "subtitle": "We work with the most powerful and reliable tools in the modern development ecosystem."
+  },
+  "trust": {
+    "badge": "Trust",
+    "title": "Companies That Trust Us",
+    "subtitle": "We collaborate with innovative companies in Mexico, the United States, and Canada."
+  },
+  "beforeAfter": {
+    "badge": "Real Impact",
+    "title": "Before & After Implementing AI",
+    "subtitle": "Measurable results we have achieved with our clients by integrating artificial intelligence solutions into their operations.",
+    "headers": {
+      "aspect": "Aspect",
+      "before": "Before",
+      "after": "After with AI"
+    },
+    "rows": [
+      {
+        "aspect": "Data processing",
+        "before": "8 hours of manual work",
+        "after": "45 automated minutes"
+      },
+      {
+        "aspect": "Data entry errors",
+        "before": "12% human error",
+        "after": "0.5% with AI validation"
+      },
+      {
+        "aspect": "Customer support",
+        "before": "40 queries handled per day",
+        "after": "200+ queries with AI chatbot"
+      },
+      {
+        "aspect": "Monthly operating costs",
+        "before": "$15,000 MXN / month",
+        "after": "$4,500 MXN / month"
+      },
+      {
+        "aspect": "Response time",
+        "before": "24 to 48 hours",
+        "after": "Less than 5 minutes"
+      }
+    ]
+  },
+  "faq": {
+    "badge": "Frequently Asked Questions",
+    "title": "Questions About AI Implementation & Development",
+    "subtitle": "We answer the most common questions about our software development and AI consulting services.",
+    "items": [
+      {
+        "question": "What technologies do you use for software development?",
+        "answer": "We use the MEVN stack (MariaDB/MongoDB, Express, Vue.js, Node.js) combined with AWS services for cloud infrastructure. We also integrate OpenAI API, Tailwind CSS, and Nuxt for high-performance applications. Each project is designed with scalable architecture following enterprise security standards."
+      },
+      {
+        "question": "How can AI help my business?",
+        "answer": "The Capibara Web's AI solutions automate 40% of your repetitive tasks, from data processing to customer support with intelligent chatbots. We implement OpenAI solutions that integrate directly into your existing workflows, reducing operating costs by up to 70% and improving response times from days to minutes."
+      },
+      {
+        "question": "Do you offer SaaS solutions for the healthcare sector?",
+        "answer": "Yes, we specialize in HealthTech. We have developed platforms such as Medicynia (medical management SaaS) and Doctor Digital (a network of over 10 platforms for specialists). Our solutions include electronic clinical records, telemedicine, intelligent scheduling, and automated billing, all compliant with Mexican health regulations."
+      },
+      {
+        "question": "How long does it take to develop a custom platform?",
+        "answer": "The timeline varies by complexity. A functional MVP typically takes 8 to 12 weeks. Complete SaaS platforms with multiple modules can take 4 to 6 months. We work with agile methodologies (Scrum) with incremental deliveries every 2 weeks so you can see real progress from the start."
+      },
+      {
+        "question": "Do you work with international companies?",
+        "answer": "Yes, we have 12 years of experience working with companies in Mexico, the United States, and Canada. We have developed national job portals in the U.S. (Education America) and industrial-scale IoT systems (Agtronix). Our team works on flexible time zones with bilingual Spanish-English communication."
+      },
+      {
+        "question": "What does your AI training service include?",
+        "answer": "Our program includes: diagnosis of automatable processes, practical workshops with OpenAI tools, guided implementation of AI solutions in your daily operations, and ongoing post-training support. Teams learn to use AI with real cases from their industry, not just theory. Measurable results from the first week of implementation."
+      },
+      {
+        "question": "How do you improve my company's web positioning?",
+        "answer": "We implement SEO, AEO, and LLMO strategies from the project architecture. We use Schema.org structured data, SSG/SSR rendering for crawlers, optimized Core Web Vitals, and semantic content that allows search engines and generative AIs to identify your brand as an authority in your sector."
+      }
+    ]
+  },
+  "contact": {
+    "badge": "Contact",
+    "title": "Let's Talk About Your Project",
+    "subtitle": "Book a free consultation and discover how we can transform your business with cutting-edge technology.",
+    "form": {
+      "name": "Full name",
+      "email": "Email address",
+      "phone": "Phone (optional)",
+      "message": "Tell us about your project",
+      "submit": "Send Message",
+      "sending": "Sending...",
+      "success": "Message sent successfully. We'll contact you soon.",
+      "error": "Error sending message. Please try again or contact us via WhatsApp."
+    },
+    "whatsapp": "Chat on WhatsApp",
+    "info": {
+      "title": "Contact Information",
+      "email": "contacto{'@'}thecapibaraweb.mx",
+      "phone": "+52 618 183 5957",
+      "location": "Durango, Mexico"
+    }
+  },
+  "footer": {
+    "description": "Digital Solutions Factory. Over 12 years transforming complex ideas into scalable digital infrastructures for companies in Mexico, the U.S., and Canada.",
+    "sections": {
+      "services": "Services",
+      "company": "Company",
+      "legal": "Legal"
+    },
+    "links": {
+      "software": "Software Development",
+      "ai": "AI Implementation",
+      "healthtech": "HealthTech Solutions",
+      "cloud": "Cloud Migration",
+      "about": "About Us",
+      "projects": "Projects",
+      "training": "AI Training",
+      "contact": "Contact",
+      "privacy": "Privacy Policy",
+      "terms": "Terms & Conditions"
+    },
+    "copyright": "The Capibara Web. All rights reserved.",
+    "location": "Durango, Mexico"
+  },
+  "privacy": {
+    "title": "Privacy Policy",
+    "lastUpdated": "Last updated: February 2026"
+  },
+  "terms": {
+    "title": "Terms & Conditions",
+    "lastUpdated": "Last updated: February 2026"
+  }
+}
