@@ -8,114 +8,96 @@
         <p class="section-subtitle mt-4 gsap-reveal">{{ $t('services.subtitle') }}</p>
       </div>
 
-      <!-- Services Grid — 3 arriba, 2 centradas abajo -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-        <article
-          v-for="(service, index) in services"
-          :key="index"
-          :class="[
-            'glass-card p-8 sm:p-10 group hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 gsap-reveal',
-            services.length === 5 && index >= 3 ? 'lg:col-span-1' : ''
-          ]"
+      <!-- Contenedor de cards para la animación scroll-pinned -->
+      <div ref="cardsContainer" class="relative min-h-[500px]">
+        <div
+          ref="cardsWrapper"
+          class="flex flex-wrap justify-center gap-4 items-start"
         >
-          <!-- Icono -->
           <div
-            class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-capibara-900/5 dark:bg-capibara-300/10 group-hover:scale-110 transition-transform duration-300"
+            v-for="(service, index) in allServicesData"
+            :key="index"
+            ref="cardRefs"
+            class="service-card service-gradient-border rounded-3xl p-[2px] overflow-hidden w-full sm:w-[340px] lg:w-[320px] opacity-0"
           >
-            <component
-              :is="serviceIcons[index]"
-              :size="28"
-              class="text-capibara-900 dark:text-capibara-300"
-            />
-          </div>
-
-          <!-- Placeholder de imagen del servicio -->
-          <div class="relative w-full aspect-[3/2] rounded-2xl overflow-hidden mb-6 bg-capibara-100 dark:bg-capibara-800/50">
-            <div class="w-full h-full flex items-center justify-center">
-              <ImageIcon :size="36" class="text-capibara-300 dark:text-capibara-700" />
-            </div>
-          </div>
-
-          <!-- Content -->
-          <h3 class="font-heading text-xl sm:text-2xl font-bold text-capibara-900 dark:text-capibara-100 mb-4">
-            {{ service.title }}
-          </h3>
-          <p class="font-body text-capibara-600 dark:text-capibara-400 leading-relaxed mb-6">
-            {{ service.description }}
-          </p>
-
-          <!-- Tags -->
-          <div class="flex flex-wrap gap-2">
-            <span
-              v-for="tag in service.tags"
-              :key="tag"
-              class="px-3 py-1 text-xs font-body font-medium rounded-full bg-capibara-100 dark:bg-capibara-800 text-capibara-700 dark:text-capibara-300"
+            <article
+              class="relative rounded-[22px] overflow-hidden group min-h-[400px] h-full flex flex-col justify-end"
             >
-              {{ tag }}
-            </span>
-          </div>
-        </article>
-      </div>
+              <!-- Imagen de fondo -->
+              <img
+                :src="allServiceImages[index]"
+                :alt="service.title"
+                class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                loading="lazy"
+              />
+              <!-- Overlay oscuro -->
+              <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/35" />
 
-      <!-- Fila inferior centrada (cards 4 y 5) -->
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 mt-6 lg:mt-8 max-w-4xl mx-auto">
-        <article
-          v-for="(service, index) in servicesBottom"
-          :key="index + 3"
-          class="glass-card p-8 sm:p-10 group hover:shadow-2xl transition-all duration-500 hover:-translate-y-1 gsap-reveal"
-        >
-          <!-- Icono -->
-          <div
-            class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 bg-capibara-900/5 dark:bg-capibara-300/10 group-hover:scale-110 transition-transform duration-300"
-          >
-            <component
-              :is="serviceIconsBottom[index]"
-              :size="28"
-              class="text-capibara-900 dark:text-capibara-300"
-            />
-          </div>
+              <!-- Contenido sobre la imagen -->
+              <div class="relative z-10 p-8">
+                <!-- Icono -->
+                <div
+                  class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-white/15 backdrop-blur-sm"
+                >
+                  <component
+                    :is="allServiceIcons[index]"
+                    :size="24"
+                    class="text-white"
+                  />
+                </div>
 
-          <!-- Placeholder de imagen del servicio -->
-          <div class="relative w-full aspect-[3/2] rounded-2xl overflow-hidden mb-6 bg-capibara-100 dark:bg-capibara-800/50">
-            <div class="w-full h-full flex items-center justify-center">
-              <ImageIcon :size="36" class="text-capibara-300 dark:text-capibara-700" />
-            </div>
-          </div>
+                <h3 class="font-heading text-xl font-bold text-white mb-3">
+                  {{ service.title }}
+                </h3>
+                <p class="font-body text-white/80 leading-relaxed mb-5 text-sm">
+                  {{ service.description }}
+                </p>
 
-          <!-- Content -->
-          <h3 class="font-heading text-xl sm:text-2xl font-bold text-capibara-900 dark:text-capibara-100 mb-4">
-            {{ service.title }}
-          </h3>
-          <p class="font-body text-capibara-600 dark:text-capibara-400 leading-relaxed mb-6">
-            {{ service.description }}
-          </p>
-
-          <!-- Tags -->
-          <div class="flex flex-wrap gap-2">
-            <span
-              v-for="tag in service.tags"
-              :key="tag"
-              class="px-3 py-1 text-xs font-body font-medium rounded-full bg-capibara-100 dark:bg-capibara-800 text-capibara-700 dark:text-capibara-300"
-            >
-              {{ tag }}
-            </span>
+                <!-- Tags -->
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    v-for="tag in service.tags"
+                    :key="tag"
+                    class="px-3 py-1 text-xs font-body font-medium rounded-full bg-white/15 backdrop-blur-sm text-white/90"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+              </div>
+            </article>
           </div>
-        </article>
+        </div>
       </div>
     </div>
   </section>
 </template>
 
 <script setup lang="ts">
-import { Globe, Bot, Monitor, Search, GraduationCap, ImageIcon } from 'lucide-vue-next'
+import { Globe, Bot, Monitor, Search, GraduationCap } from 'lucide-vue-next'
 
 const { t, tm, rt } = useI18n()
 const { $gsap, $ScrollTrigger } = useNuxtApp()
 
-const serviceIcons = [Globe, Bot, Monitor]
-const serviceIconsBottom = [Search, GraduationCap]
+const cardsContainer = ref<HTMLElement | null>(null)
+const cardsWrapper = ref<HTMLElement | null>(null)
+const cardRefs = ref<HTMLElement[]>([])
 
-const allServices = computed(() => {
+// Iconos e imágenes de todos los servicios en orden
+const allServiceIcons = [Globe, Bot, Monitor, Search, GraduationCap]
+const allServiceImages = [
+  '/services/web-desing.webp',
+  '/services/ai-automation.webp',
+  '/services/saas.webp',
+  '/services/seo.webp',
+  '/services/tech-ai.webp',
+]
+
+// Rotaciones finales para el layout en abanico (en grados)
+const fanRotations = [-6, -3, 0, 3, 6]
+// Desplazamientos verticales para el efecto cascada
+const fanOffsets = [20, 8, 0, 8, 20]
+
+const allServicesData = computed(() => {
   const raw = tm('services.items')
   if (!Array.isArray(raw)) return []
   return raw.map((item: any) => ({
@@ -125,30 +107,73 @@ const allServices = computed(() => {
   }))
 })
 
-// Primeros 3 servicios (fila superior)
-const services = computed(() => allServices.value.slice(0, 3))
-// Últimos 2 servicios (fila inferior centrada)
-const servicesBottom = computed(() => allServices.value.slice(3))
-
 onMounted(() => {
   const gsap = $gsap as typeof import('gsap').gsap
+  const ScrollTrigger = $ScrollTrigger as typeof import('gsap/ScrollTrigger').ScrollTrigger
 
-  gsap.utils.toArray<HTMLElement>('#servicios .gsap-reveal').forEach((el, i) => {
+  if (!cardsContainer.value || !cardRefs.value.length) return
+
+  // Animación del header
+  gsap.utils.toArray<HTMLElement>('#servicios .gsap-reveal').forEach((el) => {
     gsap.fromTo(
       el,
-      { opacity: 0, y: 40 },
+      { opacity: 0, y: 30 },
       {
         opacity: 1,
         y: 0,
         duration: 0.8,
-        delay: i * 0.1,
         scrollTrigger: {
           trigger: el,
-          start: 'top 85%',
+          start: 'top 90%',
           toggleActions: 'play none none none',
         },
       },
     )
   })
+
+  // Timeline principal con pin
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: cardsContainer.value,
+      start: 'top 20%',
+      end: `+=${cardRefs.value.length * 400}`,
+      pin: true,
+      scrub: 1,
+      anticipatePin: 1,
+    },
+  })
+
+  // Cada card entra una a una desde abajo con rotación
+  cardRefs.value.forEach((card, i) => {
+    tl.fromTo(
+      card,
+      {
+        opacity: 0,
+        y: 200,
+        rotate: 15,
+        scale: 0.85,
+      },
+      {
+        opacity: 1,
+        y: fanOffsets[i],
+        rotate: fanRotations[i],
+        scale: 1,
+        duration: 1,
+        ease: 'power3.out',
+      },
+      i * 0.6, // Escalonamiento entre cards
+    )
+  })
 })
 </script>
+
+<style scoped>
+/* Borde degradado multicolor */
+.service-gradient-border {
+  background: linear-gradient(135deg, #0E7C7B, #17BEBB, #D4F4DD, #D62246, #4B1D3F);
+}
+
+.service-card {
+  will-change: transform, opacity;
+}
+</style>

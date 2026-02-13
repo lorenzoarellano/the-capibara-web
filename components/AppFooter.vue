@@ -141,14 +141,14 @@
           v-show="$colorMode.value !== 'dark'"
           src="/footer-walking.webp"
           alt="Capibara caminando"
-          class="h-28 sm:h-36 w-auto"
+          class="h-28 sm:h-36 w-auto footer-capibara"
           loading="lazy"
         />
         <img
           v-show="$colorMode.value === 'dark'"
           src="/footer-walking-dark.webp"
           alt="Capibara caminando"
-          class="h-28 sm:h-36 w-auto"
+          class="h-28 sm:h-36 w-auto footer-capibara"
           loading="lazy"
         />
       </div>
@@ -172,4 +172,19 @@ import { useWhatsappNotification } from '~/composables/useWhatsappNotification'
 
 const { sendNotification } = useWhatsappNotification()
 const currentYear = new Date().getFullYear()
+const { $gsap } = useNuxtApp()
+
+onMounted(() => {
+  const gsap = $gsap as typeof import('gsap').gsap
+  
+  // Animación de balanceo suave para el capibara
+  gsap.to('.footer-capibara', {
+    y: -8,
+    rotate: 1.5,
+    duration: 3,
+    repeat: -1,
+    yoyo: true,
+    ease: 'sine.inOut'
+  })
+})
 </script>

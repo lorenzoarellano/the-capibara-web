@@ -33,25 +33,32 @@
         </div>
 
         <!-- Right: Feature Cards -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
           <div
             v-for="(feature, index) in features"
             :key="index"
-            class="glass-card p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 gsap-reveal border-t-2"
+            class="glass-card p-6 border-t-4 transition-all duration-500 hover:shadow-[0_20px_50px_rgba(14,124,123,0.15)] hover:-translate-y-2 gsap-reveal group"
             :style="{ borderTopColor: featureColors[index] }"
           >
             <div
-              class="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
+              class="w-14 h-14 rounded-2xl flex items-center justify-center mb-6 transition-all duration-500 group-hover:scale-110 group-hover:rotate-6 relative"
               :style="{ backgroundColor: featureColors[index] + '18' }"
             >
+              <!-- Glow effect on hover -->
+              <div 
+                class="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-40 blur-xl transition-opacity duration-500"
+                :style="{ backgroundColor: featureColors[index] }"
+              ></div>
+              
               <component
                 :is="featureIcons[index]"
-                :size="22"
+                :size="28"
+                class="relative z-10"
                 :style="{ color: featureColors[index] }"
               />
             </div>
             <h3
-              class="font-heading text-lg font-bold text-capibara-900 dark:text-capibara-100 mb-2"
+              class="font-heading text-xl font-bold text-capibara-900 dark:text-capibara-100 mb-3"
             >
               {{ feature.title }}
             </h3>

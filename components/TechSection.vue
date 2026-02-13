@@ -26,6 +26,11 @@
           </span>
         </div>
       </div>
+
+      <!-- Leyenda -->
+      <p class="text-center mt-8 text-sm font-body font-medium text-capibara-500 dark:text-capibara-400 gsap-reveal">
+        ¡Y muchos más!
+      </p>
     </div>
   </section>
 </template>

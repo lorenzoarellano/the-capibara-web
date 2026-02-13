@@ -13,7 +13,7 @@
         <article
           v-for="(project, index) in projects"
           :key="index"
-          class="glass-card overflow-hidden group hover:shadow-2xl transition-all duration-500 gsap-reveal"
+          class="glass-card overflow-hidden group hover:shadow-2xl transition-all duration-500 gsap-reveal flex flex-col"
         >
           <!-- Imagen del proyecto con efecto mask luminance -->
           <div class="relative w-full aspect-video bg-capibara-100 dark:bg-capibara-800/50 overflow-hidden">
@@ -26,7 +26,7 @@
           </div>
 
           <!-- Zona de contenido con color ambiental de la imagen -->
-          <div class="relative overflow-hidden">
+          <div class="relative overflow-hidden bg-white/40 dark:bg-white/[0.03] flex-grow flex flex-col">
             <!-- Imagen difuminada como fondo ambiental -->
             <img
               :src="projectImages[index]"
@@ -36,7 +36,7 @@
             />
 
             <!-- Contenido sobre el fondo ambiental -->
-            <div class="relative z-10">
+            <div class="relative z-10 flex-grow flex flex-col">
               <!-- Top Bar with metric -->
               <div class="px-8 pt-8 pb-4 flex items-start justify-between">
                 <div>
@@ -75,7 +75,7 @@
 
               <!-- Tags & CTA -->
               <div
-                class="px-8 pb-8 flex flex-wrap items-center justify-between gap-4"
+                class="px-8 pb-8 flex flex-wrap items-center justify-between gap-4 mt-auto"
               >
                 <div class="flex flex-wrap gap-2">
                   <span
@@ -86,12 +86,24 @@
                     {{ tag }}
                   </span>
                 </div>
-                <button
-                  class="flex items-center gap-1.5 text-sm font-body font-semibold text-capibara-900 dark:text-capibara-200 hover:gap-3 transition-all duration-300 cursor-pointer"
-                >
-                  {{ $t('showcase.viewProject') }}
-                  <ArrowRight :size="16" />
-                </button>
+                <div class="flex flex-wrap gap-4">
+                  <template v-if="projectLinks[index]">
+                    <a
+                      v-for="(link, li) in projectLinks[index]"
+                      :key="li"
+                      :href="link.url"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="group/link flex items-center gap-2 text-sm font-heading font-bold text-capibara-600 dark:text-capibara-400 hover:text-capibara-900 dark:hover:text-capibara-100 transition-all duration-300"
+                    >
+                      <span class="relative">
+                        {{ link.label || $t('showcase.viewProject') }}
+                        <span class="absolute -bottom-1 left-0 w-0 h-0.5 bg-capibara-500 transition-all duration-300 group-hover/link:w-full"></span>
+                      </span>
+                      <ArrowRight :size="16" class="transform group-hover/link:translate-x-1 transition-transform" />
+                    </a>
+                  </template>
+                </div>
               </div>
             </div>
           </div>
@@ -115,6 +127,19 @@ const projectImages = [
   '/success/alvarado.webp',
   '/success/doctordigital.webp',
   '/success/agtronix.webp',
+]
+
+// Links externos de cada proyecto
+const projectLinks: { label?: string; url: string }[][] = [
+  [
+    { label: 'Education Canada', url: 'https://educationcanada.com/' },
+    { label: 'jFairs', url: 'https://jfairs.com/' },
+  ],
+  [{ url: 'https://medicynia.com/' }],
+  [{ url: 'https://emirsa.mx/' }],
+  [{ url: 'https://alvaradomining.mx/' }],
+  [{ url: 'https://doctordigital.mx/' }],
+  [{ url: 'https://ag-tronix.com/' }],
 ]
 
 const projects = computed(() => {
