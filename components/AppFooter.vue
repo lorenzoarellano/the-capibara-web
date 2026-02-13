@@ -1,5 +1,6 @@
 <template>
-  <footer class="border-t border-capibara-100 dark:border-capibara-800 pt-16 pb-8">
+  <footer class="relative border-t border-capibara-100 dark:border-capibara-800 pt-16 pb-8 bg-white dark:bg-capibara-950">
+
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
         <!-- Brand Column -->
@@ -127,6 +128,24 @@
             </li>
           </ul>
         </div>
+      </div>
+
+      <!-- Capibara caminando centrado sobre la línea -->
+      <div class="flex justify-center -mb-4">
+        <img
+          v-show="$colorMode.value !== 'dark'"
+          src="/footer-walking.webp"
+          alt="Capibara caminando"
+          class="h-28 sm:h-36 w-auto"
+          loading="lazy"
+        />
+        <img
+          v-show="$colorMode.value === 'dark'"
+          src="/footer-walking-dark.webp"
+          alt="Capibara caminando"
+          class="h-28 sm:h-36 w-auto"
+          loading="lazy"
+        />
       </div>
 
       <!-- Bottom Bar -->
