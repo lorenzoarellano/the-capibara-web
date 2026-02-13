@@ -59,7 +59,7 @@
           <ul class="space-y-3">
             <li>
               <a href="#servicios" class="font-body text-sm text-capibara-500 dark:text-capibara-400 hover:text-capibara-900 dark:hover:text-capibara-200 transition-colors cursor-pointer">
-                {{ $t('footer.links.software') }}
+                {{ $t('footer.links.webdev') }}
               </a>
             </li>
             <li>
@@ -69,12 +69,17 @@
             </li>
             <li>
               <a href="#servicios" class="font-body text-sm text-capibara-500 dark:text-capibara-400 hover:text-capibara-900 dark:hover:text-capibara-200 transition-colors cursor-pointer">
-                {{ $t('footer.links.healthtech') }}
+                {{ $t('footer.links.systems') }}
               </a>
             </li>
             <li>
               <a href="#servicios" class="font-body text-sm text-capibara-500 dark:text-capibara-400 hover:text-capibara-900 dark:hover:text-capibara-200 transition-colors cursor-pointer">
-                {{ $t('footer.links.cloud') }}
+                {{ $t('footer.links.seo') }}
+              </a>
+            </li>
+            <li>
+              <a href="#servicios" class="font-body text-sm text-capibara-500 dark:text-capibara-400 hover:text-capibara-900 dark:hover:text-capibara-200 transition-colors cursor-pointer">
+                {{ $t('footer.links.training') }}
               </a>
             </li>
           </ul>

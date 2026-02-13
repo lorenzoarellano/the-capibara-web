@@ -15,74 +15,85 @@
           :key="index"
           class="glass-card overflow-hidden group hover:shadow-2xl transition-all duration-500 gsap-reveal"
         >
-          <!-- Placeholder de imagen del proyecto -->
+          <!-- Imagen del proyecto con efecto mask luminance -->
           <div class="relative w-full aspect-video bg-capibara-100 dark:bg-capibara-800/50 overflow-hidden">
             <img
-              v-if="project.image"
-              :src="project.image"
+              :src="projectImages[index]"
               :alt="project.title"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
             />
-            <div v-else class="w-full h-full flex items-center justify-center">
-              <ImageIcon :size="48" class="text-capibara-300 dark:text-capibara-700" />
-            </div>
-          </div>
-          <!-- Top Bar with metric -->
-          <div class="relative px-8 pt-8 pb-4 flex items-start justify-between">
-            <div>
-              <span
-                class="text-xs font-body font-semibold uppercase tracking-wider text-capibara-500 dark:text-capibara-400"
-              >
-                {{ project.category }}
-              </span>
-              <h3
-                class="font-heading text-2xl sm:text-3xl font-bold text-capibara-900 dark:text-capibara-100 mt-2"
-              >
-                {{ project.title }}
-              </h3>
-            </div>
-            <!-- Metric Badge -->
-            <div
-              class="flex-shrink-0 ml-4 glass-card !rounded-2xl px-5 py-3 text-center group-hover:scale-105 transition-transform duration-300"
-            >
-              <span
-                class="block text-xl font-heading font-bold text-capibara-900 dark:text-capibara-100"
-              >
-                {{ project.metric }}
-              </span>
-              <span class="block text-[10px] font-body text-capibara-500 dark:text-capibara-400 uppercase tracking-wider mt-0.5">
-                {{ project.metricLabel }}
-              </span>
-            </div>
           </div>
 
-          <!-- Description -->
-          <div class="px-8 pb-6">
-            <p class="font-body text-capibara-600 dark:text-capibara-400 leading-relaxed">
-              {{ project.description }}
-            </p>
-          </div>
+          <!-- Zona de contenido con color ambiental de la imagen -->
+          <div class="relative overflow-hidden">
+            <!-- Imagen difuminada como fondo ambiental -->
+            <img
+              :src="projectImages[index]"
+              :alt="''"
+              aria-hidden="true"
+              class="absolute inset-0 w-full h-full object-cover scale-150 blur-[60px] opacity-30 dark:opacity-25 pointer-events-none"
+            />
 
-          <!-- Tags & CTA -->
-          <div
-            class="px-8 pb-8 flex flex-wrap items-center justify-between gap-4"
-          >
-            <div class="flex flex-wrap gap-2">
-              <span
-                v-for="tag in project.tags"
-                :key="tag"
-                class="px-3 py-1 text-xs font-body font-medium rounded-full bg-capibara-900/5 dark:bg-capibara-300/10 text-capibara-700 dark:text-capibara-300"
+            <!-- Contenido sobre el fondo ambiental -->
+            <div class="relative z-10">
+              <!-- Top Bar with metric -->
+              <div class="px-8 pt-8 pb-4 flex items-start justify-between">
+                <div>
+                  <span
+                    class="text-xs font-body font-semibold uppercase tracking-wider text-capibara-500 dark:text-capibara-400"
+                  >
+                    {{ project.category }}
+                  </span>
+                  <h3
+                    class="font-heading text-2xl sm:text-3xl font-bold text-capibara-900 dark:text-capibara-100 mt-2"
+                  >
+                    {{ project.title }}
+                  </h3>
+                </div>
+                <!-- Metric Badge -->
+                <div
+                  class="flex-shrink-0 ml-4 glass-card !rounded-2xl px-5 py-3 text-center group-hover:scale-105 transition-transform duration-300"
+                >
+                  <span
+                    class="block text-xl font-heading font-bold text-capibara-900 dark:text-capibara-100"
+                  >
+                    {{ project.metric }}
+                  </span>
+                  <span class="block text-[10px] font-body text-capibara-500 dark:text-capibara-400 uppercase tracking-wider mt-0.5">
+                    {{ project.metricLabel }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Description -->
+              <div class="px-8 pb-6">
+                <p class="font-body text-capibara-600 dark:text-capibara-400 leading-relaxed">
+                  {{ project.description }}
+                </p>
+              </div>
+
+              <!-- Tags & CTA -->
+              <div
+                class="px-8 pb-8 flex flex-wrap items-center justify-between gap-4"
               >
-                {{ tag }}
-              </span>
+                <div class="flex flex-wrap gap-2">
+                  <span
+                    v-for="tag in project.tags"
+                    :key="tag"
+                    class="px-3 py-1 text-xs font-body font-medium rounded-full bg-capibara-900/5 dark:bg-capibara-300/10 text-capibara-700 dark:text-capibara-300"
+                  >
+                    {{ tag }}
+                  </span>
+                </div>
+                <button
+                  class="flex items-center gap-1.5 text-sm font-body font-semibold text-capibara-900 dark:text-capibara-200 hover:gap-3 transition-all duration-300 cursor-pointer"
+                >
+                  {{ $t('showcase.viewProject') }}
+                  <ArrowRight :size="16" />
+                </button>
+              </div>
             </div>
-            <button
-              class="flex items-center gap-1.5 text-sm font-body font-semibold text-capibara-900 dark:text-capibara-200 hover:gap-3 transition-all duration-300 cursor-pointer"
-            >
-              {{ $t('showcase.viewProject') }}
-              <ArrowRight :size="16" />
-            </button>
           </div>
         </article>
       </div>
@@ -91,10 +102,20 @@
 </template>
 
 <script setup lang="ts">
-import { ArrowRight, ImageIcon } from 'lucide-vue-next'
+import { ArrowRight } from 'lucide-vue-next'
 
 const { tm, rt } = useI18n()
 const { $gsap } = useNuxtApp()
+
+// Mapa de imágenes de los proyectos (mismo orden que en i18n)
+const projectImages = [
+  '/success/columbus.webp',
+  '/success/medicynia.webp',
+  '/success/emirsa.webp',
+  '/success/alvarado.webp',
+  '/success/doctordigital.webp',
+  '/success/agtronix.webp',
+]
 
 const projects = computed(() => {
   const raw = tm('showcase.projects')
@@ -105,7 +126,6 @@ const projects = computed(() => {
     description: rt(item.description),
     metric: rt(item.metric),
     metricLabel: rt(item.metricLabel),
-    image: item.image ? rt(item.image) : null,
     tags: Array.isArray(item.tags) ? item.tags.map((tag: any) => rt(tag)) : [],
   }))
 })

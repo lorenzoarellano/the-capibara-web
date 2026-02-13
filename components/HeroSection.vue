@@ -34,17 +34,17 @@
           </p>
 
           <!-- CTAs -->
-          <div ref="heroCtas" class="gsap-reveal flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-4">
-            <button class="btn-primary text-base sm:text-lg" @click="handleSchedule">
-              <CalendarCheck :size="20" />
+          <div ref="heroCtas" class="gsap-reveal flex flex-col sm:flex-row items-center lg:items-start justify-center lg:justify-start gap-3">
+            <button class="btn-primary text-sm sm:text-base !px-6 !py-3" @click="handleSchedule">
+              <CalendarCheck :size="18" />
               {{ $t('hero.cta') }}
             </button>
             <a
               href="#servicios"
-              class="btn-secondary text-base sm:text-lg"
+              class="btn-secondary text-sm sm:text-base !px-6 !py-3"
               @click.prevent="scrollToServices"
             >
-              <ArrowDown :size="20" />
+              <ArrowDown :size="18" />
               {{ $t('hero.ctaSecondary') }}
             </a>
           </div>

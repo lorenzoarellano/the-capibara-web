@@ -17,101 +17,176 @@
     "badge": "Over 12 years of software engineering experience",
     "title": "Software Engineering",
     "titleHighlight": "& AI Solutions",
-    "subtitle": "We transform complex ideas into scalable digital infrastructures. From medical SaaS to international job portals, we design technology that delivers real impact.",
+    "subtitle": "We don't just build software, we anticipate the future of your business. From mining websites to medical SaaS and AI chatbots, we design solutions that grow with you.",
     "cta": "Book a Free Consultation",
     "ctaSecondary": "Explore Services"
   },
   "services": {
     "badge": "What we do",
-    "title": "Specialized Services",
-    "subtitle": "As MEVN Stack experts with over 12 years of experience, we deliver high-performance digital solutions for companies that need to scale.",
+    "title": "Our Services",
+    "subtitle": "Over 12 years creating high-impact digital solutions for companies in Mexico, the U.S., and Canada. From premium websites to SaaS platforms and AI strategies.",
     "items": [
       {
-        "title": "Custom Software Development",
-        "description": "Robust architectures with Vue.js, Node.js, and AWS. We build scalable systems that process millions of transactions, from IoT ecosystems to international job portals.",
-        "tags": ["Vue.js", "Node.js", "AWS", "REST API"]
+        "title": "Web Design & Development",
+        "description": "We create custom corporate websites with premium design, responsive layouts, and performance optimization. From mining industry sites to international education platforms, every project reflects your brand's unique identity.",
+        "tags": [
+          "UI/UX",
+          "Nuxt.js",
+          "Vue.js",
+          "Responsive"
+        ]
       },
       {
-        "title": "AI Implementation & Training",
-        "description": "OpenAI API integration and custom AI models. We train your team to automate 40% of repetitive tasks and optimize enterprise workflows.",
-        "tags": ["OpenAI", "Machine Learning", "Automation"]
+        "title": "Artificial Intelligence & Automation",
+        "description": "We implement WhatsApp chatbots with and without AI, automate business processes, and deliver intelligent data analysis. We integrate AI into your workflows to reduce time and operating costs.",
+        "tags": [
+          "Chatbots",
+          "WhatsApp",
+          "OpenAI",
+          "Automation"
+        ]
       },
       {
-        "title": "Specialized Vertical Solutions",
-        "description": "SaaS for the healthcare (HealthTech) and education (EdTech) sectors. Platforms like Medicynia and Doctor Digital that manage networks of medical specialists in Mexico.",
-        "tags": ["HealthTech", "EdTech", "SaaS"]
+        "title": "Custom Web Systems",
+        "description": "We develop SaaS platforms, dashboards, admin panels, and enterprise management systems. Success stories: Medicynia (electronic clinical records) and job portals with advanced admin panels.",
+        "tags": [
+          "SaaS",
+          "Dashboards",
+          "Node.js",
+          "APIs"
+        ]
       },
       {
-        "title": "Cloud Migration & Performance",
-        "description": "Secure AWS migration with Core Web Vitals optimization. We reduce load times by 60% and guarantee 99.9% availability for critical operations.",
-        "tags": ["AWS", "DevOps", "Performance"]
+        "title": "Digital Positioning",
+        "description": "SEO, AEO, GEO, and LLMO strategies to make your business visible on search engines and generative AIs. Google Business, online reputation, and optimized content that positions your brand as an authority in your sector.",
+        "tags": [
+          "SEO",
+          "AEO",
+          "LLMO",
+          "Google Business"
+        ]
+      },
+      {
+        "title": "AI Training for Business",
+        "description": "Hands-on AI productivity workshops for enterprise teams. We teach AI-assisted writing, office task automation, and chatbot creation. Measurable results from the first week of implementation.",
+        "tags": [
+          "Workshops",
+          "Productivity",
+          "Enterprise AI"
+        ]
       }
     ]
   },
   "showcase": {
     "badge": "Featured Projects",
     "title": "Success Stories",
-    "subtitle": "We have developed systems for U.S. companies, national job portals in Canada, and successful medical SaaS platforms that impact thousands of users daily.",
+    "subtitle": "Real projects delivered to companies in Mexico, the U.S., and Canada. From corporate websites to SaaS platforms and international job portals.",
     "projects": [
       {
-        "title": "Agtronix",
-        "category": "IoT & Artificial Intelligence",
-        "description": "Complete IoT ecosystem for intelligent monitoring of over 1 million plants. Sensor integration, predictive AI analysis, and real-time dashboard to optimize large-scale crops.",
-        "metric": "+1M",
-        "metricLabel": "plants monitored",
-        "tags": ["IoT", "AI", "Vue.js", "Node.js"]
-      },
-      {
-        "title": "Education America",
-        "category": "International Job Portal",
-        "description": "Leading job portal in the United States connecting professionals with employment opportunities. Intelligent matching system, candidate management, and advanced admin panel.",
-        "metric": "U.S.",
-        "metricLabel": "national reach",
-        "tags": ["SaaS", "Vue.js", "MariaDB", "AWS"]
+        "title": "Columbus Networks",
+        "category": "Virtual Job Fairs",
+        "description": "Development and maintenance of virtual job fair and education recruitment platforms for Canada (educationcanada.com, jfairs.com). Systems used by thousands of educators in over 160 countries.",
+        "metric": "160+",
+        "metricLabel": "countries reached",
+        "tags": [
+          "Vue.js",
+          "MariaDB",
+          "PHP",
+          "SaaS"
+        ]
       },
       {
         "title": "Medicynia",
-        "category": "HealthTech SaaS",
-        "description": "Comprehensive medical management SaaS platform in Mexico. Electronic clinical records, intelligent scheduling, telemedicine, and automated billing for clinics and offices.",
+        "category": "SaaS — Electronic Clinical Records",
+        "description": "SaaS platform for doctors in Mexico. Clinical record management, digital prescriptions, and smart scheduling, compliant with NOM-004-SSA3-2012. TheCapibaraWeb's own product.",
         "metric": "SaaS",
-        "metricLabel": "leading medical management",
-        "tags": ["HealthTech", "SaaS", "Vue.js", "Node.js"]
+        "metricLabel": "own product",
+        "tags": [
+          "HealthTech",
+          "Vue.js",
+          "Node.js",
+          "SaaS"
+        ]
+      },
+      {
+        "title": "Emirsa",
+        "category": "Website + Blog + Email Migration",
+        "description": "Corporate website for a leading diamond drilling mining exploration company. Includes news blog, presence in 4 Mexican states, and email migration to professional platforms.",
+        "metric": "4",
+        "metricLabel": "states of presence",
+        "tags": [
+          "Nuxt.js",
+          "SEO",
+          "Branding",
+          "Email"
+        ]
+      },
+      {
+        "title": "Alvarado Mining",
+        "category": "Website + Job Dashboard",
+        "description": "Corporate website for a mining works and services company with over 15 years of experience. Includes admin panel for job posting and vacancy management.",
+        "metric": "15+",
+        "metricLabel": "years of experience",
+        "tags": [
+          "Vite",
+          "Vue.js",
+          "Dashboard",
+          "HR"
+        ]
       },
       {
         "title": "Doctor Digital",
-        "category": "Medical Platform Network",
-        "description": "Network of over 10 specialized digital platforms for doctors of different specialties. Each platform adapted to the specific workflow of each medical specialty.",
+        "category": "Medical Digital Marketing",
+        "description": "Digital agency specialized in online presence for doctors. Websites optimized for SEO, AEO, GEO, and LLMO. Medical branding, Google Business, and digital training for healthcare professionals.",
         "metric": "+10",
-        "metricLabel": "specialized platforms",
-        "tags": ["HealthTech", "Multi-platform", "SaaS"]
+        "metricLabel": "doctors positioned",
+        "tags": [
+          "SEO",
+          "AEO",
+          "Branding",
+          "Nuxt.js"
+        ]
+      },
+      {
+        "title": "Agtronix",
+        "category": "IoT & Smart Agriculture",
+        "description": "IoT platform for smart agricultural monitoring. Sensor integration, real-time data analysis, and dashboard to optimize water resource usage in large-scale crops.",
+        "metric": "IoT",
+        "metricLabel": "smart agriculture",
+        "tags": [
+          "IoT",
+          "Vue.js",
+          "Node.js",
+          "Sensors"
+        ]
       }
     ],
     "viewProject": "View project"
   },
   "training": {
     "badge": "Enterprise Training",
-    "title": "AI for Business",
-    "subtitle": "We teach your team to master artificial intelligence to optimize workflows and multiply productivity.",
-    "description": "Our AI training program is designed for teams that want to integrate artificial intelligence tools into their daily operations. We implement real solutions that generate measurable results from the first week.",
+    "title": "AI for Your Team",
+    "subtitle": "We train your team to use artificial intelligence in their daily work: from writing emails to creating chatbots and automating office tasks.",
+    "description": "We don't teach theory, we teach practice. Our workshops are designed so your team starts using AI from day one, with real tools applied to their daily work.",
     "features": [
       {
-        "title": "Process Automation",
-        "description": "We identify repetitive tasks and automate them with AI, freeing up to 40% of your team's time."
+        "title": "AI Productivity",
+        "description": "Learn to write emails, create presentations, summarize documents, and automate repetitive office tasks with AI."
       },
       {
-        "title": "OpenAI Integration",
-        "description": "We implement ChatGPT and OpenAI APIs directly into your work tools for intelligent assistance."
+        "title": "WhatsApp Chatbots",
+        "description": "We create and implement chatbots for WhatsApp Business, with or without AI, for customer service and automated sales."
       },
       {
-        "title": "Predictive Analytics",
-        "description": "We turn your data into actionable predictions to make better business decisions."
+        "title": "Data Analysis",
+        "description": "Turn your spreadsheets and databases into actionable insights with AI tools for decision-making."
       },
       {
-        "title": "Hands-on Training",
-        "description": "Hands-on workshops where your team learns to use AI with real cases from your industry."
+        "title": "Custom Workshops",
+        "description": "In-person or virtual workshops tailored to your industry and experience level. Measurable results from the first week."
       }
     ],
-    "cta": "Request Training Program"
+    "cta": "Request Training"
   },
   "tech": {
     "badge": "Tech Stack",
@@ -126,72 +201,72 @@
   "beforeAfter": {
     "badge": "Real Impact",
     "title": "Before & After Implementing AI",
-    "subtitle": "Measurable results we have achieved with our clients by integrating artificial intelligence solutions into their operations.",
+    "subtitle": "This is how a company's operations change when it integrates AI and automation into its daily processes.",
     "headers": {
-      "aspect": "Aspect",
-      "before": "Before",
-      "after": "After with AI"
+      "aspect": "Process",
+      "before": "Without AI",
+      "after": "With AI"
     },
     "rows": [
       {
-        "aspect": "Data processing",
-        "before": "8 hours of manual work",
-        "after": "45 automated minutes"
+        "aspect": "Writing emails and documents",
+        "before": "30-60 min per complex email",
+        "after": "5 min with AI assistant"
       },
       {
-        "aspect": "Data entry errors",
-        "before": "12% human error",
-        "after": "0.5% with AI validation"
+        "aspect": "Customer support via WhatsApp",
+        "before": "1 person, limited hours",
+        "after": "24/7 chatbot + human escalation"
       },
       {
-        "aspect": "Customer support",
-        "before": "40 queries handled per day",
-        "after": "200+ queries with AI chatbot"
+        "aspect": "Data entry and organization",
+        "before": "Manual Excel spreadsheets",
+        "after": "Automated with AI validation"
       },
       {
-        "aspect": "Monthly operating costs",
-        "before": "$15,000 MXN / month",
-        "after": "$4,500 MXN / month"
+        "aspect": "Search engine presence",
+        "before": "No web positioning",
+        "after": "AI-optimized SEO + AEO"
       },
       {
-        "aspect": "Response time",
-        "before": "24 to 48 hours",
-        "after": "Less than 5 minutes"
+        "aspect": "Client response time",
+        "before": "24 to 48 hours by email",
+        "after": "Instant response via chatbot"
       }
     ]
   },
   "faq": {
     "badge": "Frequently Asked Questions",
-    "title": "Questions About AI Implementation & Development",
-    "subtitle": "We answer the most common questions about our software development and AI consulting services.",
+    "title": "We Answer Your Questions",
+    "subtitle": "The most common questions about our web development, AI, and digital positioning services.",
     "items": [
       {
-        "question": "What technologies do you use for software development?",
-        "answer": "We use the MEVN stack (MariaDB/MongoDB, Express, Vue.js, Node.js) combined with AWS services for cloud infrastructure. We also integrate OpenAI API, Tailwind CSS, and Nuxt for high-performance applications. Each project is designed with scalable architecture following enterprise security standards."
+        "question": "What type of websites do you build?",
+        "answer": "We create custom corporate websites for any industry: mining, healthcare, education, agro-tech, and more. Each site is designed with a unique visual identity, responsive layout, SEO optimization, and admin panel if needed. We use modern technologies like Nuxt.js, Vue.js, and Node.js."
       },
       {
-        "question": "How can AI help my business?",
-        "answer": "The Capibara Web's AI solutions automate 40% of your repetitive tasks, from data processing to customer support with intelligent chatbots. We implement OpenAI solutions that integrate directly into your existing workflows, reducing operating costs by up to 70% and improving response times from days to minutes."
+        "question": "Do you build WhatsApp chatbots?",
+        "answer": "Yes, we create chatbots for WhatsApp Business with and without artificial intelligence. From simple bots for automated responses to smart assistants that understand context and can handle sales, schedule appointments, or resolve FAQs autonomously, 24 hours a day."
       },
       {
-        "question": "Do you offer SaaS solutions for the healthcare sector?",
-        "answer": "Yes, we specialize in HealthTech. We have developed platforms such as Medicynia (medical management SaaS) and Doctor Digital (a network of over 10 platforms for specialists). Our solutions include electronic clinical records, telemedicine, intelligent scheduling, and automated billing, all compliant with Mexican health regulations."
+        "question": "What is SEO, AEO, and LLMO positioning?",
+        "answer": "SEO positions your site on Google. AEO (Answer Engine Optimization) optimizes your content to appear in direct search engine answers. LLMO (Large Language Model Optimization) prepares your brand to be recommended by AIs like ChatGPT and Gemini. We implement all three strategies for maximum visibility."
       },
       {
-        "question": "How long does it take to develop a custom platform?",
-        "answer": "The timeline varies by complexity. A functional MVP typically takes 8 to 12 weeks. Complete SaaS platforms with multiple modules can take 4 to 6 months. We work with agile methodologies (Scrum) with incremental deliveries every 2 weeks so you can see real progress from the start."
+        "question": "Do you develop custom systems or platforms?",
+        "answer": "Yes, we develop SaaS platforms, dashboards, admin panels, and management systems. For example, we created Medicynia, an electronic clinical record system compliant with NOM-004-SSA3-2012, and portals with job vacancy management for mining companies."
       },
       {
-        "question": "Do you work with international companies?",
-        "answer": "Yes, we have 12 years of experience working with companies in Mexico, the United States, and Canada. We have developed national job portals in the U.S. (Education America) and industrial-scale IoT systems (Agtronix). Our team works on flexible time zones with bilingual Spanish-English communication."
+        "question": "Do you work with companies outside Durango?",
+        "answer": "Yes, we work with local, national, and international clients. We have clients in Canada (Columbus Networks), the United States (Education America), and multiple Mexican states. Our team works remotely with bilingual Spanish-English communication."
       },
       {
-        "question": "What does your AI training service include?",
-        "answer": "Our program includes: diagnosis of automatable processes, practical workshops with OpenAI tools, guided implementation of AI solutions in your daily operations, and ongoing post-training support. Teams learn to use AI with real cases from their industry, not just theory. Measurable results from the first week of implementation."
+        "question": "What does AI training include?",
+        "answer": "We offer hands-on workshops where your team learns to use AI for writing emails, automating office tasks, analyzing data, and creating content. We also implement WhatsApp chatbots and AI productivity tools. Everything is tailored to your industry and experience level."
       },
       {
-        "question": "How do you improve my company's web positioning?",
-        "answer": "We implement SEO, AEO, and LLMO strategies from the project architecture. We use Schema.org structured data, SSG/SSR rendering for crawlers, optimized Core Web Vitals, and semantic content that allows search engines and generative AIs to identify your brand as an authority in your sector."
+        "question": "Do you offer support after delivering a project?",
+        "answer": "Yes, we offer ongoing support Monday through Friday from 9am to 5pm, with communication channels open for emergencies. We ensure your site or system works correctly and accompany you in its growth."
       }
     ]
   },
@@ -225,13 +300,13 @@
       "legal": "Legal"
     },
     "links": {
-      "software": "Software Development",
-      "ai": "AI Implementation",
-      "healthtech": "HealthTech Solutions",
-      "cloud": "Cloud Migration",
+      "webdev": "Web Design & Development",
+      "ai": "AI & Automation",
+      "systems": "Custom Web Systems",
+      "seo": "Digital Positioning",
+      "training": "AI Training",
       "about": "About Us",
       "projects": "Projects",
-      "training": "AI Training",
       "contact": "Contact",
       "privacy": "Privacy Policy",
       "terms": "Terms & Conditions"

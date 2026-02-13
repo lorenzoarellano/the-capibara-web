@@ -102,10 +102,17 @@ const navItems = [
   { key: 'contact', id: 'contacto' },
 ]
 
+const router = useRouter()
+const route = useRoute()
+
 function scrollToSection(id: string) {
   const el = document.getElementById(id)
   if (el) {
+    // El elemento existe en la página actual — scroll directo
     el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  } else {
+    // Estamos en una página interna — navegar al index con hash
+    router.push(`/#${id}`)
   }
 }
 

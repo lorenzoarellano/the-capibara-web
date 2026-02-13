@@ -15,11 +15,13 @@
             {{ $t('training.description') }}
           </p>
 
-          <!-- Placeholder de imagen de capacitación -->
-          <div class="relative w-full aspect-video rounded-2xl overflow-hidden mt-6 bg-capibara-100 dark:bg-capibara-800/50 gsap-reveal">
-            <div class="w-full h-full flex items-center justify-center">
-              <ImageIcon :size="48" class="text-capibara-300 dark:text-capibara-700" />
-            </div>
+          <!-- Imagen de capacitación -->
+          <div class="relative w-full aspect-video mt-6 gsap-reveal rounded-2xl overflow-hidden">
+            <img
+              src="/ia.webp"
+              alt="Capacitación en Inteligencia Artificial"
+              class="w-full h-full object-cover"
+            />
           </div>
 
           <div class="mt-8 gsap-reveal">
@@ -35,15 +37,17 @@
           <div
             v-for="(feature, index) in features"
             :key="index"
-            class="glass-card p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 gsap-reveal"
+            class="glass-card p-6 hover:shadow-xl transition-all duration-300 hover:-translate-y-1 gsap-reveal border-t-2"
+            :style="{ borderTopColor: featureColors[index] }"
           >
             <div
-              class="w-10 h-10 rounded-xl flex items-center justify-center mb-4 bg-capibara-900/5 dark:bg-capibara-300/10"
+              class="w-10 h-10 rounded-xl flex items-center justify-center mb-4"
+              :style="{ backgroundColor: featureColors[index] + '18' }"
             >
               <component
                 :is="featureIcons[index]"
                 :size="22"
-                class="text-capibara-900 dark:text-capibara-300"
+                :style="{ color: featureColors[index] }"
               />
             </div>
             <h3
@@ -62,7 +66,7 @@
 </template>
 
 <script setup lang="ts">
-import { Sparkles, Workflow, Bot, TrendingUp, GraduationCap, ImageIcon } from 'lucide-vue-next'
+import { Sparkles, Workflow, Bot, TrendingUp, GraduationCap } from 'lucide-vue-next'
 import { useWhatsappNotification } from '~/composables/useWhatsappNotification'
 
 const { openWhatsApp } = useWhatsappNotification()
@@ -70,6 +74,9 @@ const { tm, rt } = useI18n()
 const { $gsap } = useNuxtApp()
 
 const featureIcons = [Workflow, Bot, TrendingUp, GraduationCap]
+
+// Colores personalizados para cada card de capacitación
+const featureColors = ['#0E7C7B', '#17BEBB', '#D62246', '#4B1D3F']
 
 const features = computed(() => {
   const raw = tm('training.features')
