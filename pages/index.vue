@@ -2,18 +2,17 @@
   <div>
     <HeroSection />
     <ServicesSection />
+    <NewsSection />
     <ShowcaseSection />
     <TrainingSection />
     <BeforeAfterSection />
-    <TechSection />
     <TrustSection />
-    <FaqSection />
     <ContactSection />
   </div>
 </template>
 
 <script setup lang="ts">
-const { t, tm, rt, locale } = useI18n()
+const { t, locale } = useI18n()
 
 // SEO Meta
 useHead({
@@ -26,24 +25,11 @@ useHead({
 })
 
 // JSON-LD Structured Data
-const faqItems = computed(() => {
-  const raw = tm('faq.items')
-  if (!Array.isArray(raw)) return []
-  return raw.map((item: any) => ({
-    '@type': 'Question',
-    name: rt(item.question),
-    acceptedAnswer: {
-      '@type': 'Answer',
-      text: rt(item.answer),
-    },
-  }))
-})
-
 useHead({
   script: [
     {
       type: 'application/ld+json',
-      children: computed(() =>
+      innerHTML: computed(() =>
         JSON.stringify({
           '@context': 'https://schema.org',
           '@graph': [
@@ -112,11 +98,6 @@ useHead({
               name: 'The Capibara Web',
               publisher: { '@id': 'https://thecapibaraweb.com.mx/#organization' },
               inLanguage: ['es-MX', 'en-US'],
-            },
-            {
-              '@type': 'FAQPage',
-              '@id': 'https://thecapibaraweb.com.mx/#faq',
-              mainEntity: faqItems.value,
             },
             {
               '@type': 'SoftwareApplication',

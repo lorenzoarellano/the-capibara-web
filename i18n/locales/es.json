@@ -8,8 +8,7 @@
     "services": "Servicios",
     "projects": "Proyectos",
     "training": "Capacitación IA",
-    "tech": "Tecnologías",
-    "faq": "FAQ",
+    "news": "Noticias",
     "contact": "Contacto",
     "schedule": "Agendar Consulta"
   },
@@ -321,5 +320,19 @@
   "terms": {
     "title": "Términos y Condiciones",
     "lastUpdated": "Última actualización: Febrero 2026"
+  },
+  "news": {
+    "badge": "Noticias & Artículos",
+    "title": "Blog de Tecnología",
+    "subtitle": "Explora las últimas tendencias en IA, desarrollo de software y transformación digital.",
+    "viewAll": "Ver todas las noticias",
+    "readMore": "Leer más",
+    "categories": "Categorías",
+    "all": "Todas",
+    "prev": "Anterior",
+    "next": "Siguiente",
+    "related": "Artículos Relacionados",
+    "noResults": "No se encontraron noticias.",
+    "loading": "Cargando noticias..."
   }
 }

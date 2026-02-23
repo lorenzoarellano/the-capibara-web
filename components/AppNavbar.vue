@@ -97,8 +97,7 @@ const navItems = [
   { key: 'services', id: 'servicios' },
   { key: 'projects', id: 'proyectos' },
   { key: 'training', id: 'capacitacion' },
-  { key: 'tech', id: 'tecnologias' },
-  { key: 'faq', id: 'faq' },
+  { key: 'news', id: 'noticias' },
   { key: 'contact', id: 'contacto' },
 ]
 

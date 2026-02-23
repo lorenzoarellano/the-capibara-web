@@ -8,8 +8,7 @@
     "services": "Services",
     "projects": "Projects",
     "training": "AI Training",
-    "tech": "Technologies",
-    "faq": "FAQ",
+    "news": "News",
     "contact": "Contact",
     "schedule": "Book a Call"
   },
@@ -321,5 +320,19 @@
   "terms": {
     "title": "Terms & Conditions",
     "lastUpdated": "Last updated: February 2026"
+  },
+  "news": {
+    "badge": "News & Articles",
+    "title": "Tech Blog",
+    "subtitle": "Explore the latest trends in AI, software development, and digital transformation.",
+    "viewAll": "View all news",
+    "readMore": "Read more",
+    "categories": "Categories",
+    "all": "All",
+    "prev": "Previous",
+    "next": "Next",
+    "related": "Related Articles",
+    "noResults": "No news found.",
+    "loading": "Loading news..."
   }
 }
