@@ -40,6 +40,9 @@ export default defineEventHandler(async (event) => {
   if (!email || typeof email !== 'string' || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     throw createError({ statusCode: 400, message: 'Correo electrónico válido es requerido.' })
   }
+  if (!phone || typeof phone !== 'string' || phone.length < 10) {
+    throw createError({ statusCode: 400, message: 'Número de teléfono válido es requerido.' })
+  }
   if (!message || typeof message !== 'string' || message.trim().length < 10) {
     throw createError({ statusCode: 400, message: 'Mensaje es requerido (mínimo 10 caracteres).' })
   }
@@ -52,21 +55,22 @@ export default defineEventHandler(async (event) => {
   const safeMessage = sanitize(message)
 
   // Configure SMTP transporter
-  const config = useRuntimeConfig()
-  const transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST || 'smtp.gmail.com',
-    port: parseInt(process.env.SMTP_PORT || '587'),
+  const config = useRuntimeConfig(event)
+  const smtpConfig = {
+    host: (config.smtpHost as string) || 'smtp.gmail.com',
+    port: parseInt((config.smtpPort as string) || '587'),
     secure: false,
     auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
+      user: config.smtpUser as string,
+      pass: config.smtpPass as string,
     },
-  })
+  }
+  const transporter = nodemailer.createTransport(smtpConfig)
 
   try {
     await transporter.sendMail({
-      from: `"TheCapibaraWeb Contacto" <${process.env.SMTP_USER}>`,
-      to: process.env.CONTACT_EMAIL || 'contacto@thecapibaraweb.mx',
+      from: `"TheCapibaraWeb Contacto" <${config.smtpUser as string}>`,
+      to: (config.contactEmail as string) || 'contacto@thecapibaraweb.mx',
       replyTo: safeEmail,
       subject: `Nuevo contacto web: ${safeName}`,
       html: `

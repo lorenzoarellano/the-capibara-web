@@ -277,7 +277,7 @@
     "form": {
       "name": "Full name",
       "email": "Email address",
-      "phone": "Phone (optional)",
+      "phone": "Phone",
       "message": "Tell us about your project",
       "submit": "Send Message",
       "sending": "Sending...",
@@ -287,7 +287,7 @@
     "whatsapp": "Chat on WhatsApp",
     "info": {
       "title": "Contact Information",
-      "email": "contacto{'@'}thecapibaraweb.mx",
+      "hours": "Monday to Friday from 9am to 5pm, Saturdays and Sundays Closed",
       "phone": "+52 618 183 5957",
       "location": "Durango, Mexico"
     }

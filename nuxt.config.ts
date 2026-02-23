@@ -1,5 +1,8 @@
 export default defineNuxtConfig({
   ssr: true,
+  devServer: {
+    port: parseInt(process.env.MAIN_PORT || '3003'),
+  },
 
   app: {
     head: {
@@ -42,7 +45,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'canonical', href: 'https://thecapibaraweb.com.mx' },
-        { rel: 'icon', type: 'image/webp', href: '/logo.webp' },
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' },
       ],
     },
   },
@@ -97,4 +100,12 @@ export default defineNuxtConfig({
   },
 
   compatibilityDate: '2024-12-01',
+  runtimeConfig: {
+    smtpHost: process.env.SMTP_HOST,
+    smtpPort: process.env.SMTP_PORT,
+    smtpUser: process.env.SMTP_USER,
+    smtpPass: process.env.SMTP_PASS,
+    contactEmail: process.env.CONTACT_EMAIL,
+    webcybert: process.env.WEBCYBERT,
+  },
 })

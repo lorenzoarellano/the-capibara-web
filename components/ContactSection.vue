@@ -43,30 +43,58 @@
               </div>
             </div>
 
-            <!-- Phone -->
+            <!-- Phone with Country Selector -->
             <div>
               <label for="contact-phone" class="block text-sm font-body font-semibold text-capibara-700 dark:text-capibara-300 mb-2">
                 {{ $t('contact.form.phone') }}
               </label>
-              <input
-                id="contact-phone"
-                v-model="form.phone"
-                type="tel"
-                class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-capibara-800/50 border border-capibara-200 dark:border-capibara-700 font-body text-capibara-900 dark:text-capibara-100 placeholder:text-capibara-400 focus:outline-none focus:ring-2 focus:ring-capibara-900/20 dark:focus:ring-capibara-300/20 transition-all"
-                :placeholder="$t('contact.form.phone')"
-              />
+              <div class="flex gap-2">
+                <!-- Country Code Selector -->
+                <div class="relative min-w-[100px]">
+                  <select
+                    v-model="countryCode"
+                    class="appearance-none w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-capibara-800/50 border border-capibara-200 dark:border-capibara-700 font-body text-sm text-capibara-900 dark:text-capibara-100 focus:outline-none focus:ring-2 focus:ring-capibara-900/20 dark:focus:ring-capibara-300/20 transition-all cursor-pointer"
+                  >
+                    <option value="+52">🇲🇽 +52</option>
+                    <option value="+1">🇺🇸 +1</option>
+                    <option value="+1-CA">🇨🇦 +1</option>
+                  </select>
+                  <div class="pointer-events-none absolute inset-y-0 right-3 flex items-center text-capibara-400">
+                    <ChevronDown :size="14" />
+                  </div>
+                </div>
+                <!-- Phone input with mask -->
+                <div class="relative flex-1">
+                  <input
+                    id="contact-phone"
+                    v-model="form.phone"
+                    type="tel"
+                    required
+                    maxlength="14"
+                    class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-capibara-800/50 border border-capibara-200 dark:border-capibara-700 font-body text-capibara-900 dark:text-capibara-100 placeholder:text-capibara-400 focus:outline-none focus:ring-2 focus:ring-capibara-900/20 dark:focus:ring-capibara-300/20 transition-all"
+                    placeholder="(000)-000-0000"
+                    @input="onPhoneInput"
+                  />
+                </div>
+              </div>
             </div>
 
-            <!-- Message -->
+            <!-- Message with character limit -->
             <div>
-              <label for="contact-message" class="block text-sm font-body font-semibold text-capibara-700 dark:text-capibara-300 mb-2">
-                {{ $t('contact.form.message') }}
-              </label>
+              <div class="flex justify-between items-end mb-2">
+                <label for="contact-message" class="block text-sm font-body font-semibold text-capibara-700 dark:text-capibara-300">
+                  {{ $t('contact.form.message') }}
+                </label>
+                <span class="text-[10px] font-mono text-capibara-400" :class="{ 'text-red-500': form.message.length > 500 }">
+                  {{ form.message.length }}/500
+                </span>
+              </div>
               <textarea
                 id="contact-message"
                 v-model="form.message"
                 required
                 rows="5"
+                maxlength="505"
                 class="w-full px-4 py-3 rounded-xl bg-white/50 dark:bg-capibara-800/50 border border-capibara-200 dark:border-capibara-700 font-body text-capibara-900 dark:text-capibara-100 placeholder:text-capibara-400 focus:outline-none focus:ring-2 focus:ring-capibara-900/20 dark:focus:ring-capibara-300/20 transition-all resize-none"
                 :placeholder="$t('contact.form.message')"
               />
@@ -75,10 +103,11 @@
             <!-- Submit -->
             <button
               type="submit"
-              :disabled="sending"
+              :disabled="sending || isSpam"
               class="btn-primary w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
             >
-              <Send :size="18" />
+              <Send :size="18" v-if="!sending" />
+              <Loader2 :size="18" class="animate-spin" v-else />
               {{ sending ? $t('contact.form.sending') : $t('contact.form.submit') }}
             </button>
 
@@ -113,14 +142,11 @@
             </h3>
             <ul class="space-y-5">
               <li class="flex items-start gap-4">
-                <Mail :size="20" class="flex-shrink-0 mt-0.5 text-capibara-500" />
+                <Clock :size="20" class="flex-shrink-0 mt-0.5 text-capibara-500" />
                 <div>
-                  <a
-                    href="mailto:contacto@thecapibaraweb.mx"
-                    class="font-body text-capibara-900 dark:text-capibara-200 hover:underline cursor-pointer"
-                  >
-                    {{ $t('contact.info.email') }}
-                  </a>
+                  <span class="font-body text-capibara-600 dark:text-capibara-400">
+                    {{ $t('contact.info.hours') }}
+                  </span>
                 </div>
               </li>
               <li class="flex items-start gap-4">
@@ -157,9 +183,6 @@
               <span class="block font-heading text-lg font-bold text-capibara-900 dark:text-capibara-100">
                 {{ $t('contact.whatsapp') }}
               </span>
-              <span class="block font-body text-sm text-capibara-500 dark:text-capibara-400">
-                +52 618 183 5957
-              </span>
             </div>
           </button>
         </div>
@@ -169,12 +192,13 @@
 </template>
 
 <script setup lang="ts">
-import { Send, Mail, Phone, MapPin } from 'lucide-vue-next'
+import { Send, Clock, Phone, MapPin, ChevronDown, Loader2 } from 'lucide-vue-next'
 import { useWhatsappNotification } from '~/composables/useWhatsappNotification'
 
 const { openWhatsApp, sendNotification } = useWhatsappNotification()
 const { $gsap } = useNuxtApp()
 
+const countryCode = ref('+52')
 const form = reactive({
   name: '',
   email: '',
@@ -185,8 +209,38 @@ const form = reactive({
 const sending = ref(false)
 const status = ref<'idle' | 'success' | 'error'>('idle')
 
+// Basic Honeypot / Anti-spam logic
+const isSpam = computed(() => {
+  if (form.message.length > 500) return true
+  return false
+})
+
+function onPhoneInput(e: Event) {
+  const input = e.target as HTMLInputElement
+  let value = input.value.replace(/\D/g, '')
+  
+  if (value.length > 10) value = value.slice(0, 10)
+
+  let formatted = ''
+  if (value.length > 0) {
+    formatted = '(' + value.substring(0, 3)
+    if (value.length > 3) {
+      formatted += ')-' + value.substring(3, 6)
+    }
+    if (value.length > 6) {
+      formatted += '-' + value.substring(6, 10)
+    }
+  }
+  
+  form.phone = formatted
+}
+
 async function handleSubmit() {
-  if (sending.value) return
+  if (sending.value || isSpam.value) return
+  
+  // Extra validation
+  if (form.phone.length < 14) return // (xxx)-xxx-xxxx is 14 chars
+
   sending.value = true
   status.value = 'idle'
 
@@ -194,10 +248,10 @@ async function handleSubmit() {
     await $fetch('/api/contact', {
       method: 'POST',
       body: {
-        name: form.name,
-        email: form.email,
-        phone: form.phone,
-        message: form.message,
+        name: form.name.substring(0, 50),
+        email: form.email.substring(0, 100),
+        phone: `${countryCode.value} ${form.phone}`,
+        message: form.message.substring(0, 500),
       },
     })
     status.value = 'success'
@@ -206,6 +260,10 @@ async function handleSubmit() {
     form.phone = ''
     form.message = ''
     sendNotification('Formulario de contacto')
+    
+    setTimeout(() => {
+      status.value = 'idle'
+    }, 5000)
   } catch {
     status.value = 'error'
   } finally {

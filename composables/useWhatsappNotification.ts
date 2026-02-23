@@ -19,7 +19,7 @@ export function useWhatsappNotification() {
     const mensaje = `Click sitio web TheCapibaraWeb en el boton ${buttonName} a las: ${hora}`
 
     try {
-      await fetch('https://cybertbot.com/masivo', {
+      await fetch('/api/notify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

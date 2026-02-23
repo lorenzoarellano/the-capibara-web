@@ -141,9 +141,9 @@ const row2: Client[] = [
   { name: 'Dr. Edgar Arrieta', slug: 'dredgar', url: 'https://reumatologiadurango.com/' },
   { name: 'Dr. Jeheiziel', slug: 'drjeheiziel', url: 'https://internistalaguna.com/' },
   { name: 'Dr. José Luis Reveles', slug: 'drjoseluis', url: 'https://drjoseluisrevelestraumatologo.com/' },
-  { name: 'Dr. Ricardo Rubio', slug: 'drricardorubio' },
   { name: 'Dra. Denise Medina', slug: 'denisemedina', url: 'https://dradenisemedina.com/' },
   { name: 'Dra. Saira Rosales', slug: 'sairarosales', url: 'https://drasairarosales.com/' },
+  { name: 'Dra. Yissel', slug: 'drayisselinternista', url: 'https://internistaenaguascalientes.com/' },
 ]
 
 // Duplicar cada fila para crear el loop infinito sin saltos

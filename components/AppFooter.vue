@@ -39,6 +39,15 @@
               <Facebook :size="18" class="text-capibara-600 dark:text-capibara-400" />
             </a>
             <a
+              href="https://www.linkedin.com/in/lorenzo-arellano/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+              class="w-10 h-10 rounded-full bg-capibara-100 dark:bg-capibara-800 flex items-center justify-center hover:bg-capibara-200 dark:hover:bg-capibara-700 transition-colors cursor-pointer"
+            >
+              <Linkedin :size="18" class="text-capibara-600 dark:text-capibara-400" />
+            </a>
+            <a
               href="https://wa.me/526181835957"
               target="_blank"
               rel="noopener noreferrer"
@@ -167,7 +176,7 @@
 </template>
 
 <script setup lang="ts">
-import { Instagram, Facebook, MessageCircle } from 'lucide-vue-next'
+import { Instagram, Facebook, MessageCircle, Linkedin } from 'lucide-vue-next'
 import { useWhatsappNotification } from '~/composables/useWhatsappNotification'
 
 const { sendNotification } = useWhatsappNotification()
