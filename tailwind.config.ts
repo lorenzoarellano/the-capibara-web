@@ -25,7 +25,7 @@ export default <Config>{
           50: '#f8f8f8',
         },
         teal: {
-          DEFAULT: '#0E7C7B',
+          DEFAULT: '#0B6A69', // Oscurecido para accesibilidad AA (4.5:1)
           light: '#17BEBB',
           dark: '#0a5f5e',
         },

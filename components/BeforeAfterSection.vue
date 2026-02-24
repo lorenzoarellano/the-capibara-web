@@ -94,8 +94,8 @@ const { tm, rt } = useI18n()
 const { $gsap } = useNuxtApp()
 
 const rows = computed(() => {
-  const raw = tm('beforeAfter.rows')
-  if (!Array.isArray(raw)) return []
+  const raw = tm('beforeAfter.rows') as any
+  if (!raw || !Array.isArray(raw)) return []
   return raw.map((item: any) => ({
     aspect: rt(item.aspect),
     before: rt(item.before),

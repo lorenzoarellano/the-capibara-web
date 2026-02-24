@@ -26,7 +26,7 @@
               class="relative rounded-[22px] overflow-hidden group min-h-[400px] h-full flex flex-col justify-end"
             >
               <!-- Imagen de fondo -->
-              <img
+              <NuxtImg
                 :src="allServiceImages[index]"
                 :alt="service.title"
                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -34,6 +34,7 @@
                 itemprop="image"
                 width="400"
                 height="300"
+                format="avif,webp"
               />
               <!-- Overlay oscuro -->
               <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/35" />

@@ -24,7 +24,8 @@
           v-for="item in navItems"
           :key="item.id"
           :href="`#${item.id}`"
-          class="text-sm font-body font-medium text-capibara-700 dark:text-capibara-300 hover:text-capibara-900 dark:hover:text-white transition-colors duration-200 cursor-pointer"
+          :aria-current="activeSection === item.id ? 'page' : undefined"
+          class="text-sm font-body font-medium text-capibara-700 dark:text-capibara-300 hover:text-capibara-900 dark:hover:text-white transition-colors duration-200 cursor-pointer focus:outline-none focus:ring-2 focus:ring-teal-light focus:ring-offset-2 rounded-lg px-2 py-1"
           @click.prevent="scrollToSection(item.id)"
         >
           {{ $t(`nav.${item.key}`) }}
@@ -95,6 +96,7 @@ const localePath = useLocalePath()
 const { openWhatsApp } = useWhatsappNotification()
 const mobileOpen = ref(false)
 const scrolled = ref(false)
+const activeSection = ref('')
 let lastScrollY = 0
 
 const navItems = computed(() => {
@@ -136,6 +138,20 @@ function handleSchedule() {
 function onScroll() {
   const currentY = window.scrollY
   scrolled.value = currentY > 20
+  
+  // Detectar sección activa para aria-current
+  const sections = navItems.value.map(item => item.id)
+  for (const id of sections) {
+    const el = document.getElementById(id)
+    if (el) {
+      const rect = el.getBoundingClientRect()
+      if (rect.top <= 100 && rect.bottom >= 100) {
+        activeSection.value = id
+        break
+      }
+    }
+  }
+  
   lastScrollY = currentY
 }
 

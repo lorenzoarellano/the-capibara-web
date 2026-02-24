@@ -17,28 +17,35 @@
         >
           <!-- Imagen del proyecto con efecto mask luminance -->
           <div class="relative w-full aspect-video bg-capibara-100 dark:bg-capibara-800/50 overflow-hidden">
-            <img
+            <NuxtImg
               :src="projectImages[index]"
               :alt="project.title"
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               loading="lazy"
+              width="600"
+              height="338"
+              format="avif,webp"
             />
           </div>
 
           <!-- Zona de contenido con color ambiental de la imagen -->
-          <div class="relative overflow-hidden bg-white/40 dark:bg-white/[0.03] flex-grow flex flex-col">
+          <div class="relative flex-grow flex flex-col p-8 bg-white/40 dark:bg-white/[0.03] overflow-hidden">
             <!-- Imagen difuminada como fondo ambiental -->
-            <img
+            <NuxtImg
               :src="projectImages[index]"
               :alt="''"
               aria-hidden="true"
               class="absolute inset-0 w-full h-full object-cover scale-150 blur-[60px] opacity-30 dark:opacity-25 pointer-events-none"
+              width="100"
+              height="100"
+              format="avif,webp"
+              quality="20"
             />
 
             <!-- Contenido sobre el fondo ambiental -->
-            <div class="relative z-10 flex-grow flex flex-col">
+            <div class="relative z-10 h-full flex flex-col">
               <!-- Top Bar with metric -->
-              <div class="px-8 pt-8 pb-4 flex items-start justify-between">
+              <div class="flex items-start justify-between mb-4">
                 <div>
                   <span
                     class="text-xs font-body font-semibold uppercase tracking-wider text-capibara-500 dark:text-capibara-400"
@@ -67,15 +74,13 @@
               </div>
 
               <!-- Description -->
-              <div class="px-8 pb-6">
-                <p class="font-body text-capibara-600 dark:text-capibara-400 leading-relaxed">
-                  {{ project.description }}
-                </p>
-              </div>
+              <p class="font-body text-capibara-600 dark:text-capibara-400 leading-relaxed mb-8">
+                {{ project.description }}
+              </p>
 
               <!-- Tags & CTA -->
               <div
-                class="px-8 pb-8 flex flex-wrap items-center justify-between gap-4 mt-auto"
+                class="flex flex-wrap items-center justify-between gap-4 mt-auto"
               >
                 <div class="flex flex-wrap gap-2">
                   <span
@@ -94,7 +99,7 @@
                       :href="link.url"
                       target="_blank"
                       rel="noopener noreferrer"
-                      class="group/link flex items-center gap-2 text-sm font-heading font-bold text-capibara-600 dark:text-capibara-400 hover:text-capibara-900 dark:hover:text-capibara-100 transition-all duration-300"
+                      class="group/link flex items-center gap-2 text-sm font-heading font-bold text-capibara-600 dark:text-capibara-400 hover:text-capibara-900 dark:hover:text-white transition-all duration-300 focus:outline-none focus:underline"
                     >
                       <span class="relative">
                         {{ link.label || $t('showcase.viewProject') }}

@@ -48,6 +48,9 @@ export default defineNuxtConfig({
       link: [
         { rel: 'canonical', href: 'https://thecapibaraweb.com.mx' },
         { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
+        { rel: 'dns-prefetch', href: 'https://fonts.googleapis.com' },
       ],
     },
   },
@@ -57,6 +60,7 @@ export default defineNuxtConfig({
     '@nuxtjs/i18n',
     '@nuxtjs/color-mode',
     '@nuxtjs/google-fonts',
+    '@nuxt/image',
   ],
 
   css: ['~/assets/css/main.css'],
@@ -98,6 +102,14 @@ export default defineNuxtConfig({
     },
     prerender: {
       routes: ['/', '/news'],
+    },
+    // Cache de larga duración para activos estáticos (ahorro ~8MB)
+    routeRules: {
+      '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      '/**/*.webp': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      '/**/*.jpg': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      '/**/*.png': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      '/**/*.woff2': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
     },
   },
 

@@ -1,7 +1,7 @@
 <template>
   <button
-    aria-label="Toggle dark mode"
-    class="relative w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-capibara-100 dark:hover:bg-capibara-800 cursor-pointer"
+    :aria-label="colorMode.value === 'dark' ? 'Cambiar a modo claro' : 'Cambiar a modo oscuro'"
+    class="relative w-10 h-10 rounded-full flex items-center justify-center transition-colors duration-300 hover:bg-capibara-100 dark:hover:bg-capibara-800 cursor-pointer focus:outline-none focus:ring-2 focus:ring-teal-light focus:ring-offset-2"
     @click="toggle"
   >
     <Transition name="theme-icon" mode="out-in">

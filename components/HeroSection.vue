@@ -53,27 +53,27 @@
         <!-- Lado derecho: Imagen -->
         <div ref="heroImageWrapper" class="gsap-reveal relative">
           <div class="relative">
-            <img
+            <NuxtImg
               v-show="$colorMode.value !== 'dark'"
               ref="heroImageLight"
               src="/hero-light.webp"
               alt="The Capibara Web - Software Engineering"
-              class="w-full h-auto object-cover"
-              loading="eager"
-              fetchpriority="high"
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               width="600"
-              height="400"
+              height="800"
+              loading="eager"
+              format="avif,webp"
             />
-            <img
+            <NuxtImg
               v-show="$colorMode.value === 'dark'"
               ref="heroImageDark"
               src="/hero-dark.webp"
-              alt="The Capibara Web - AI Solutions"
-              class="w-full h-auto object-cover"
-              loading="eager"
-              fetchpriority="high"
+              alt="AI Solutions Durango"
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000"
               width="600"
-              height="400"
+              height="800"
+              loading="eager"
+              format="avif,webp"
             />
           </div>
         </div>
