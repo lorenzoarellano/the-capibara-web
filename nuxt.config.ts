@@ -120,6 +120,9 @@ export default defineNuxtConfig({
     // Cache de larga duración para activos estáticos (ahorro ~8MB)
     routeRules: {
       '/index.html': { redirect: { to: '/', statusCode: 301 } },
+      '/service-worker.js': { redirect: { to: '/', statusCode: 301 } },
+      '/sw.js': { redirect: { to: '/', statusCode: 301 } },
+      '/workbox-*.js': { redirect: { to: '/', statusCode: 301 } },
       '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
       '/**/*.webp': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
       '/**/*.jpg': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
