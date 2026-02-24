@@ -10,7 +10,8 @@
     "training": "Capacitación IA",
     "news": "Noticias",
     "contact": "Contacto",
-    "schedule": "Agendar Consulta"
+    "schedule": "Agendar Consulta",
+    "switchLanguage": "Cambiar a {lang}"
   },
   "hero": {
     "badge": "Más de 12 años de experiencia en ingeniería de software",

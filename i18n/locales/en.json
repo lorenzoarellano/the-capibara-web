@@ -10,7 +10,8 @@
     "training": "AI Training",
     "news": "News",
     "contact": "Contact",
-    "schedule": "Book a Call"
+    "schedule": "Book a Call",
+    "switchLanguage": "Switch to {lang}"
   },
   "hero": {
     "badge": "Over 12 years of software engineering experience",
