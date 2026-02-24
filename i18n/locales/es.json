@@ -334,5 +334,16 @@
     "related": "Artículos Relacionados",
     "noResults": "No se encontraron noticias.",
     "loading": "Cargando noticias..."
+  },
+  "error": {
+    "404": {
+      "title": "Página no encontrada",
+      "description": "Lo sentimos, la página que buscas no existe o ha sido movida."
+    },
+    "generic": {
+      "title": "Algo salió mal",
+      "description": "Hemos experimentado un error inesperado. Nuestro equipo está trabajando en ello."
+    },
+    "goHome": "Volver al inicio"
   }
 }
