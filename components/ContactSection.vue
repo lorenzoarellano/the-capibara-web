@@ -127,7 +127,7 @@
                 v-else-if="status === 'error'"
                 class="font-body text-sm text-red-500 dark:text-red-400"
               >
-                {{ $t('contact.form.error') }}
+                {{ errorMessage }}
               </p>
             </Transition>
           </form>
@@ -197,6 +197,7 @@ import { useWhatsappNotification } from '~/composables/useWhatsappNotification'
 
 const { openWhatsApp, sendNotification } = useWhatsappNotification()
 const { $gsap } = useNuxtApp()
+const { t } = useI18n()
 
 const countryCode = ref('+52')
 const form = reactive({
@@ -208,6 +209,7 @@ const form = reactive({
 
 const sending = ref(false)
 const status = ref<'idle' | 'success' | 'error'>('idle')
+const errorMessage = ref('')
 
 // Basic Honeypot / Anti-spam logic
 const isSpam = computed(() => {
@@ -243,6 +245,7 @@ async function handleSubmit() {
 
   sending.value = true
   status.value = 'idle'
+  errorMessage.value = ''
 
   try {
     await $fetch('/api/contact', {
@@ -264,8 +267,10 @@ async function handleSubmit() {
     setTimeout(() => {
       status.value = 'idle'
     }, 5000)
-  } catch {
+  } catch (err: any) {
     status.value = 'error'
+    // Extract message from Nuxt/h3 error response
+    errorMessage.value = err.data?.message || t('contact.form.error')
   } finally {
     sending.value = false
   }

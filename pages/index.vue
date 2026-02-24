@@ -48,7 +48,7 @@ useHead({
                 locale.value === 'es'
                   ? 'Factoría de Soluciones Digitales con más de 12 años de experiencia. Desarrollo de software senior con Vue.js, Node.js y AWS. Consultoría de IA para empresas. SaaS especializados en HealthTech y EdTech.'
                   : 'Digital Solutions Factory with over 12 years of experience. Senior software development with Vue.js, Node.js, and AWS. AI consulting for businesses. Specialized SaaS in HealthTech and EdTech.',
-              email: 'contacto@thecapibaraweb.mx',
+              email: 'contacto@thecapibaraweb.com.mx',
               telephone: '+526181835957',
               address: {
                 '@type': 'PostalAddress',

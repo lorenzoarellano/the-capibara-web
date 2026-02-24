@@ -106,7 +106,7 @@
             Para cualquier duda, aclaración o reclamación relacionada con estos Términos y Condiciones, puede contactarnos en:
           </p>
           <ul class="list-disc pl-6 space-y-2">
-            <li>Correo: <a href="mailto:contacto@thecapibaraweb.mx" class="text-capibara-900 dark:text-capibara-200 underline">contacto@thecapibaraweb.mx</a></li>
+            <li>Correo: <a href="mailto:contacto@thecapibaraweb.com.mx" class="text-capibara-900 dark:text-capibara-200 underline">contacto@thecapibaraweb.com.mx</a></li>
             <li>Teléfono: +52 618 183 5957</li>
             <li>Ubicación: Durango, Durango, México</li>
           </ul>

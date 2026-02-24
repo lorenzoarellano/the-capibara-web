@@ -2,7 +2,7 @@ import nodemailer from 'nodemailer'
 
 // Simple in-memory rate limiting
 const rateLimitMap = new Map<string, number>()
-const RATE_LIMIT_WINDOW = 60_000 // 1 minute
+const RATE_LIMIT_WINDOW = 5_000 // 5 seconds (relaxed for testing)
 
 export default defineEventHandler(async (event) => {
   // Rate limit by IP
@@ -56,10 +56,12 @@ export default defineEventHandler(async (event) => {
 
   // Configure SMTP transporter
   const config = useRuntimeConfig(event)
+  const port = parseInt((config.smtpPort as string) || '587')
+
   const smtpConfig = {
     host: (config.smtpHost as string) || 'smtp.gmail.com',
-    port: parseInt((config.smtpPort as string) || '587'),
-    secure: false,
+    port: port,
+    secure: port === 465, // Use SSL for port 465
     auth: {
       user: config.smtpUser as string,
       pass: config.smtpPass as string,
@@ -68,61 +70,145 @@ export default defineEventHandler(async (event) => {
   const transporter = nodemailer.createTransport(smtpConfig)
 
   try {
-    await transporter.sendMail({
-      from: `"TheCapibaraWeb Contacto" <${config.smtpUser as string}>`,
-      to: (config.contactEmail as string) || 'contacto@thecapibaraweb.mx',
+    const mailOptions = {
+      from: `"The Capibara Web Contact" <${config.smtpUser as string}>`,
+      to: (config.contactEmail as string) || 'contacto@thecapibaraweb.com.mx',
       replyTo: safeEmail,
-      subject: `Nuevo contacto web: ${safeName}`,
+      subject: `Nuevo mensaje de contacto: ${safeName}`,
+      text: `
+        Nuevo mensaje de contacto desde thecapibaraweb.com.mx
+        
+        Nombre: ${safeName}
+        Correo: ${safeEmail}
+        Teléfono: ${safePhone}
+        
+        Mensaje:
+        ${safeMessage}
+        
+        ---
+        Este es un mensaje automático enviado desde el formulario de contacto.
+      `.trim(),
       html: `
         <!DOCTYPE html>
-        <html>
+        <html lang="es">
         <head>
+          <meta charset="utf-8">
           <style>
-            body { font-family: 'Open Sans', Arial, sans-serif; color: #282121; }
-            .container { max-width: 600px; margin: 0 auto; padding: 24px; }
-            .header { background: #282121; color: #fff; padding: 20px; border-radius: 12px 12px 0 0; }
-            .content { background: #f8f8f8; padding: 24px; border-radius: 0 0 12px 12px; }
-            .field { margin-bottom: 16px; }
-            .label { font-weight: 600; color: #605555; font-size: 12px; text-transform: uppercase; letter-spacing: 0.05em; }
-            .value { margin-top: 4px; font-size: 16px; color: #282121; }
+            .email-wrapper {
+              background-color: #f6f9fc;
+              padding: 40px 0;
+              font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            }
+            .email-content {
+              max-width: 600px;
+              margin: 0 auto;
+              background-color: #ffffff;
+              border-radius: 8px;
+              overflow: hidden;
+              box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            }
+            .email-header {
+              background-color: #1a1a1a;
+              color: #ffffff;
+              padding: 30px;
+              text-align: center;
+            }
+            .email-body {
+              padding: 40px;
+              color: #333333;
+              line-height: 1.6;
+            }
+            .field-group {
+              margin-bottom: 25px;
+            }
+            .field-label {
+              font-size: 12px;
+              font-weight: 700;
+              color: #8898aa;
+              text-transform: uppercase;
+              letter-spacing: 0.04em;
+              margin-bottom: 5px;
+            }
+            .field-value {
+              font-size: 16px;
+              color: #1a1a1a;
+            }
+            .field-message {
+              background-color: #f8fafc;
+              padding: 20px;
+              border-radius: 6px;
+              border-left: 4px solid #1a1a1a;
+              font-style: italic;
+            }
+            .email-footer {
+              padding: 20px;
+              text-align: center;
+              font-size: 12px;
+              color: #8898aa;
+              background-color: #f8fafc;
+            }
           </style>
         </head>
         <body>
-          <div class="container">
-            <div class="header">
-              <h2 style="margin:0;">Nuevo Mensaje de Contacto</h2>
-              <p style="margin:4px 0 0;opacity:0.8;font-size:14px;">thecapibaraweb.com.mx</p>
-            </div>
-            <div class="content">
-              <div class="field">
-                <div class="label">Nombre</div>
-                <div class="value">${safeName}</div>
+          <div class="email-wrapper">
+            <div class="email-content">
+              <div class="email-header">
+                <h1 style="margin:0;font-size:24px;letter-spacing:0.02em;">NUEVO CONTACTO</h1>
+                <p style="margin:10px 0 0;font-size:14px;opacity:0.8;">thecapibaraweb.com.mx</p>
               </div>
-              <div class="field">
-                <div class="label">Correo Electrónico</div>
-                <div class="value"><a href="mailto:${safeEmail}">${safeEmail}</a></div>
+              <div class="email-body">
+                <div class="field-group">
+                  <div class="field-label">Nombre del Cliente</div>
+                  <div class="field-value">${safeName}</div>
+                </div>
+                <div class="field-group">
+                  <div class="field-label">Información de Contacto</div>
+                  <div class="field-value">
+                    <strong>Email:</strong> <a href="mailto:${safeEmail}" style="color:#1a1a1a;text-decoration:none;">${safeEmail}</a><br>
+                    <strong>Teléfono:</strong> ${safePhone}
+                  </div>
+                </div>
+                <div class="field-group">
+                  <div class="field-label">Mensaje</div>
+                  <div class="field-message">
+                    ${safeMessage.replace(/\n/g, '<br>')}
+                  </div>
+                </div>
               </div>
-              <div class="field">
-                <div class="label">Teléfono</div>
-                <div class="value">${safePhone}</div>
-              </div>
-              <div class="field">
-                <div class="label">Mensaje</div>
-                <div class="value">${safeMessage.replace(/\n/g, '<br>')}</div>
+              <div class="email-footer">
+                &copy; ${new Date().getFullYear()} The Capibara Web. Todos los derechos reservados.
               </div>
             </div>
           </div>
         </body>
         </html>
       `,
-    })
+    }
+
+    await transporter.sendMail(mailOptions)
 
     return { success: true, message: 'Mensaje enviado correctamente.' }
   } catch (error: any) {
     console.error('Error sending contact email:', error)
+
+    // Check for specific SMTP errors to give better feedback
+    if (error.code === 'EAUTH' || error.responseCode === 535) {
+      throw createError({
+        statusCode: 401,
+        message: 'Error de autenticación SMTP: Usuario o contraseña incorrectos en el servidor de correo.',
+      })
+    }
+
+    if (error.code === 'ECONNREFUSED' || error.code === 'ETIMEDOUT') {
+      throw createError({
+        statusCode: 503,
+        message: 'No se pudo conectar con el servidor de correo. Verifica el host y puerto.',
+      })
+    }
+
     throw createError({
       statusCode: 500,
-      message: 'Error al enviar el mensaje. Intente más tarde.',
+      message: 'Error interno al enviar el mensaje. Intente más tarde.',
     })
   }
 })

@@ -9,7 +9,7 @@
           <h2 class="font-heading text-2xl font-bold text-capibara-900 dark:text-capibara-100">Identidad del Responsable</h2>
           <p>
             <strong>The Capibara Web</strong>, con domicilio en Durango, Durango, México, y correo electrónico
-            <a href="mailto:contacto@thecapibaraweb.mx" class="text-capibara-900 dark:text-capibara-200 underline">contacto@thecapibaraweb.mx</a>,
+            <a href="mailto:contacto@thecapibaraweb.com.mx" class="text-capibara-900 dark:text-capibara-200 underline">contacto@thecapibaraweb.com.mx</a>,
             es responsable del tratamiento de sus datos personales conforme a lo dispuesto por la
             <em>Ley Federal de Protección de Datos Personales en Posesión de los Particulares</em> (LFPDPPP) y su Reglamento.
           </p>
@@ -43,7 +43,7 @@
           </ul>
           <p>
             Si usted no desea que sus datos personales sean tratados para las finalidades secundarias, puede enviar un correo a
-            <a href="mailto:contacto@thecapibaraweb.mx" class="text-capibara-900 dark:text-capibara-200 underline">contacto@thecapibaraweb.mx</a>
+            <a href="mailto:contacto@thecapibaraweb.com.mx" class="text-capibara-900 dark:text-capibara-200 underline">contacto@thecapibaraweb.com.mx</a>
             indicando su negativa.
           </p>
         </section>
@@ -53,7 +53,7 @@
           <p>
             Usted tiene derecho a Acceder, Rectificar, Cancelar u Oponerse (derechos ARCO) al tratamiento de sus datos personales.
             Para ejercer cualquiera de estos derechos, envíe una solicitud al correo electrónico
-            <a href="mailto:contacto@thecapibaraweb.mx" class="text-capibara-900 dark:text-capibara-200 underline">contacto@thecapibaraweb.mx</a>
+            <a href="mailto:contacto@thecapibaraweb.com.mx" class="text-capibara-900 dark:text-capibara-200 underline">contacto@thecapibaraweb.com.mx</a>
             con la siguiente información:
           </p>
           <ul class="list-disc pl-6 space-y-2">
@@ -96,7 +96,7 @@
             Para cualquier duda o aclaración relacionada con este Aviso de Privacidad, puede contactarnos en:
           </p>
           <ul class="list-disc pl-6 space-y-2">
-            <li>Correo: <a href="mailto:contacto@thecapibaraweb.mx" class="text-capibara-900 dark:text-capibara-200 underline">contacto@thecapibaraweb.mx</a></li>
+            <li>Correo: <a href="mailto:contacto@thecapibaraweb.com.mx" class="text-capibara-900 dark:text-capibara-200 underline">contacto@thecapibaraweb.com.mx</a></li>
             <li>Teléfono: +52 618 183 5957</li>
             <li>Ubicación: Durango, Durango, México</li>
           </ul>
