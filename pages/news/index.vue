@@ -74,15 +74,15 @@ watch([locale], () => {
   page.value = 1
 })
 
-// Fetch Posts
-const { data: posts, pending } = await useAsyncData(
+// Fetch Posts - Opción Lazy para evitar bloqueos en el servidor (SSR)
+const { data: posts, pending } = useLazyAsyncData(
   `news-posts-${locale.value}-${page.value}`,
   () => fetchPosts({
     page: page.value,
     perPage: 9,
     lang: locale.value
   }),
-  { watch: [page, locale] }
+  { watch: [page, locale], server: true }
 )
 
 // SEO

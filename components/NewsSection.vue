@@ -47,10 +47,11 @@ const { fetchPosts } = useWordPress()
 const { locale } = useI18n()
 const localePath = useLocalePath()
 
-const { data: posts, pending } = await useAsyncData(
+// Fetch Posts - Opción Lazy para carga instantánea del Hero
+const { data: posts, pending } = useLazyAsyncData(
   `home-posts-${locale.value}`,
   () => fetchPosts({ perPage: 6, lang: locale.value }),
-  { watch: [locale] }
+  { watch: [locale], server: true }
 )
 
 const { $gsap } = useNuxtApp()

@@ -101,7 +101,7 @@ export default defineNuxtConfig({
       gzip: true,
     },
     prerender: {
-      routes: ['/', '/news'],
+      routes: [],
     },
     // Cache de larga duración para activos estáticos (ahorro ~8MB)
     routeRules: {

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="post" class="pt-20">
+  <div v-if="post && !postPending" class="pt-20">
     <!-- Hero Section -->
     <section class="relative h-[60vh] min-h-[400px] flex items-center overflow-hidden">
       <img
@@ -142,13 +142,14 @@ if (locale.value === 'en') {
   await navigateTo(switchLocalePath('es'))
 }
 
-const { data: post } = await useAsyncData(`post-${slug}`, () => fetchPostBySlug(slug))
+// Fetch Post - Opción Lazy para evitar bloqueo de página
+const { data: post, pending: postPending } = useLazyAsyncData(`post-${slug}`, () => fetchPostBySlug(slug), { server: true })
 
-const { data: relatedPosts } = await useAsyncData(`related-${slug}`, () => {
+const { data: relatedPosts, pending: relatedPending } = useLazyAsyncData(`related-${slug}`, () => {
   if (!post.value) return Promise.resolve([])
   const catIds = post.value._embedded?.['wp:term']?.[0]?.map(t => t.id) || []
   return fetchRelatedPosts(catIds, post.value.id)
-}, { watch: [post] })
+}, { watch: [post], server: true })
 
 const featuredImage = computed(() => {
   return post.value?._embedded?.['wp:featuredmedia']?.[0]?.source_url || '/placeholder-news-hero.webp'
