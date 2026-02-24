@@ -14,34 +14,36 @@ export default defineNuxtConfig({
         {
           name: 'description',
           content:
-            'Transformamos ideas complejas en infraestructuras digitales escalables. Más de 12 años desarrollando software, IA y soluciones SaaS para empresas en México, EE. UU. y Canadá.',
+            'The Capibara Web: Factoría de Ingeniería de Software e IA. Especialistas en desarrollo web premium, sistemas SaaS y consultoría de Inteligencia Artificial en México, EE. UU. y Canadá.',
         },
         {
           property: 'og:title',
-          content: 'The Capibara Web | Software Engineering & AI Solutions',
+          content: 'The Capibara Web | Ingeniería de Software & Soluciones de IA',
         },
         {
           property: 'og:description',
           content:
-            'Factoría de Soluciones Digitales. Desarrollo de software senior, consultoría de IA para empresas y SaaS especializados en HealthTech y EdTech.',
+            'Desarrollo de software senior, consultoría de IA para empresas y plataformas SaaS. Transformamos tu visión en infraestructura digital escalable.',
         },
-        { property: 'og:image', content: 'https://thecapibaraweb.com.mx/og-image.webp' },
+        { property: 'og:image', content: 'https://thecapibaraweb.com.mx/social-share-cover.jpg' },
         { property: 'og:url', content: 'https://thecapibaraweb.com.mx' },
         { property: 'og:type', content: 'website' },
         { property: 'og:locale', content: 'es_MX' },
         { property: 'og:locale:alternate', content: 'en_US' },
         { property: 'og:site_name', content: 'The Capibara Web' },
         { name: 'twitter:card', content: 'summary_large_image' },
-        { name: 'twitter:title', content: 'The Capibara Web | Software Engineering & AI Solutions' },
+        { name: 'twitter:title', content: 'The Capibara Web | Ingeniería de Software & Soluciones de IA' },
+        { name: 'twitter:image', content: 'https://thecapibaraweb.com.mx/social-share-cover.jpg' },
         {
           name: 'twitter:description',
           content:
             'Factoría de Soluciones Digitales con más de 12 años de experiencia en desarrollo de software e IA.',
         },
-        { name: 'robots', content: 'index, follow, max-image-preview:large, max-snippet:-1' },
+        { name: 'robots', content: 'index, follow, max-image-preview:large' },
         { name: 'author', content: 'The Capibara Web' },
         { name: 'geo.region', content: 'MX-DUR' },
         { name: 'geo.placename', content: 'Durango' },
+        { name: 'keywords', content: 'desarrollo web, sistemas web, inteligencia artificial, software a medida, SaaS, Durango, México, IA empresas' },
       ],
       link: [
         { rel: 'canonical', href: 'https://thecapibaraweb.com.mx' },
@@ -68,7 +70,7 @@ export default defineNuxtConfig({
   googleFonts: {
     families: {
       Cinzel: [400, 700],
-      'Open+Sans': [300, 400, 500, 600, 700],
+      'Open+Sans': [400, 700],
     },
     display: 'swap',
     preload: true,
@@ -90,8 +92,12 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    compressPublicAssets: {
+      brotli: true,
+      gzip: true,
+    },
     prerender: {
-      routes: ['/'],
+      routes: ['/', '/news'],
     },
   },
 

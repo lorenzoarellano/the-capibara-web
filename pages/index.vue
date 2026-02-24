@@ -68,7 +68,7 @@ useHead({
               ],
               sameAs: [
                 'https://www.instagram.com/thecapibaraweb/',
-                'https://www.facebook.com/arellanolorenzo4',
+                'https://www.facebook.com/TheCapibaraWebCompany',
               ],
               knowsAbout: [
                 'Vue.js',
@@ -103,14 +103,44 @@ useHead({
               inLanguage: ['es-MX', 'en-US'],
             },
             {
-              '@type': 'SoftwareApplication',
-              name: 'Medicynia',
-              applicationCategory: 'HealthApplication',
-              operatingSystem: 'Web',
-              description:
-                'Plataforma SaaS de gestión médica integral en México. Expediente clínico electrónico, agenda inteligente, telemedicina y facturación automatizada.',
-              author: { '@id': 'https://thecapibaraweb.com.mx/#organization' },
+              '@type': 'FAQPage',
+              mainEntity: [
+                {
+                  '@type': 'Question',
+                  name: locale.value === 'es' ? '¿Qué servicios ofrece The Capibara Web?' : 'What services does The Capibara Web offer?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: locale.value === 'es' 
+                      ? 'Ofrecemos diseño y desarrollo web premium, inteligencia artificial, sistemas a medida (SaaS), posicionamiento digital (SEO/AEO/LLMO) y capacitación empresarial.'
+                      : 'We offer premium web design and development, artificial intelligence, custom systems (SaaS), digital positioning (SEO/AEO/LLMO), and corporate training.'
+                  }
+                },
+                {
+                  '@type': 'Question',
+                  name: locale.value === 'es' ? '¿Tienen experiencia en el sector minero?' : 'Do you have experience in the mining sector?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: locale.value === 'es'
+                      ? 'Sí, contamos con amplia experiencia desarrollando sitios corporativos y dashboards para empresas como Emirsa y Alvarado Mining.'
+                      : 'Yes, we have extensive experience developing corporate sites and dashboards for companies like Emirsa and Alvarado Mining.'
+                  }
+                }
+              ]
             },
+            {
+              '@type': 'Service',
+              name: 'Desarrollo Web Premium',
+              description: 'Diseño y desarrollo de sitios web corporativos con Nuxt.js y Vue.js.',
+              provider: { '@id': 'https://thecapibaraweb.com.mx/#organization' },
+              areaServed: ['MX', 'US', 'CA']
+            },
+            {
+              '@type': 'Service',
+              name: 'Consultoría en IA',
+              description: 'Implementación de chatbots, automatización y análisis de datos con IA.',
+              provider: { '@id': 'https://thecapibaraweb.com.mx/#organization' },
+              areaServed: ['MX', 'US', 'CA']
+            }
           ],
         }),
       ),

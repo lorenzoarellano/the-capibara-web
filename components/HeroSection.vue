@@ -61,6 +61,8 @@
               class="w-full h-auto object-cover"
               loading="eager"
               fetchpriority="high"
+              width="600"
+              height="400"
             />
             <img
               v-show="$colorMode.value === 'dark'"
@@ -70,6 +72,8 @@
               class="w-full h-auto object-cover"
               loading="eager"
               fetchpriority="high"
+              width="600"
+              height="400"
             />
           </div>
         </div>

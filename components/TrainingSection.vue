@@ -15,14 +15,6 @@
             {{ $t('training.description') }}
           </p>
 
-          <!-- Imagen de capacitación -->
-          <div class="relative w-full aspect-video mt-6 gsap-reveal rounded-2xl overflow-hidden">
-            <img
-              src="/ia.webp"
-              alt="Capacitación en Inteligencia Artificial"
-              class="w-full h-full object-cover"
-            />
-          </div>
 
           <div class="mt-8 gsap-reveal">
             <button class="btn-primary" @click="handleCTA">
@@ -86,8 +78,8 @@ const featureIcons = [Workflow, Bot, TrendingUp, GraduationCap]
 const featureColors = ['#0E7C7B', '#17BEBB', '#D62246', '#4B1D3F']
 
 const features = computed(() => {
-  const raw = tm('training.features')
-  if (!Array.isArray(raw)) return []
+  const raw = tm('training.features') as any
+  if (!raw || !Array.isArray(raw)) return []
   return raw.map((item: any) => ({
     title: rt(item.title),
     description: rt(item.description),

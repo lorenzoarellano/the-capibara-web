@@ -9,11 +9,14 @@
       </div>
 
       <!-- FAQ Items -->
-      <div class="space-y-4">
+      <div class="space-y-4" itemscope itemtype="https://schema.org/FAQPage">
         <div
           v-for="(item, index) in faqItems"
           :key="index"
           class="glass-card overflow-hidden gsap-reveal"
+          itemscope
+          itemprop="mainEntity"
+          itemtype="https://schema.org/Question"
         >
           <button
             class="w-full px-8 py-6 flex items-center justify-between gap-4 text-left cursor-pointer group"
@@ -22,6 +25,7 @@
           >
             <h3
               class="font-heading text-base sm:text-lg font-bold text-capibara-900 dark:text-capibara-100 group-hover:text-capibara-700 dark:group-hover:text-capibara-200 transition-colors"
+              itemprop="name"
             >
               {{ item.question }}
             </h3>
@@ -39,9 +43,10 @@
             leave-from-class="max-h-96 opacity-100"
             leave-to-class="max-h-0 opacity-0"
           >
-            <div v-show="openIndex === index" class="overflow-hidden">
+            <div v-show="openIndex === index" class="overflow-hidden" itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
               <p
                 class="px-8 pb-6 font-body text-capibara-600 dark:text-capibara-400 leading-relaxed"
+                itemprop="text"
               >
                 {{ item.answer }}
               </p>
@@ -62,8 +67,8 @@ const { $gsap } = useNuxtApp()
 const openIndex = ref<number | null>(0)
 
 const faqItems = computed(() => {
-  const raw = tm('faq.items')
-  if (!Array.isArray(raw)) return []
+  const raw = tm('faq.items') as any
+  if (!raw || !Array.isArray(raw)) return []
   return raw.map((item: any) => ({
     question: rt(item.question),
     answer: rt(item.answer),

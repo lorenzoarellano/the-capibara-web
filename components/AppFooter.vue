@@ -30,7 +30,7 @@
               <Instagram :size="18" class="text-capibara-600 dark:text-capibara-400" />
             </a>
             <a
-              href="https://www.facebook.com/arellanolorenzo4"
+              href="https://www.facebook.com/TheCapibaraWebCompany"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="Facebook"
@@ -152,6 +152,8 @@
           alt="Capibara caminando"
           class="h-28 sm:h-36 w-auto footer-capibara"
           loading="lazy"
+          width="300"
+          height="144"
         />
         <img
           v-show="$colorMode.value === 'dark'"
@@ -159,6 +161,8 @@
           alt="Capibara caminando"
           class="h-28 sm:h-36 w-auto footer-capibara"
           loading="lazy"
+          width="300"
+          height="144"
         />
       </div>
 

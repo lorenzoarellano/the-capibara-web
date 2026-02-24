@@ -143,8 +143,8 @@ const projectLinks: { label?: string; url: string }[][] = [
 ]
 
 const projects = computed(() => {
-  const raw = tm('showcase.projects')
-  if (!Array.isArray(raw)) return []
+  const raw = tm('showcase.projects') as any
+  if (!raw || !Array.isArray(raw)) return []
   return raw.map((item: any) => ({
     title: rt(item.title),
     category: rt(item.category),

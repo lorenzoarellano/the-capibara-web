@@ -19,6 +19,8 @@
             :key="index"
             ref="cardRefs"
             class="service-card service-gradient-border rounded-3xl p-[2px] overflow-hidden w-full sm:w-[340px] lg:w-[320px] opacity-0"
+            itemscope
+            itemtype="https://schema.org/Service"
           >
             <article
               class="relative rounded-[22px] overflow-hidden group min-h-[400px] h-full flex flex-col justify-end"
@@ -29,6 +31,9 @@
                 :alt="service.title"
                 class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                 loading="lazy"
+                itemprop="image"
+                width="400"
+                height="300"
               />
               <!-- Overlay oscuro -->
               <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/55 to-black/35" />
@@ -46,10 +51,10 @@
                   />
                 </div>
 
-                <h3 class="font-heading text-xl font-bold text-white mb-3">
+                <h3 class="font-heading text-xl font-bold text-white mb-3" itemprop="name">
                   {{ service.title }}
                 </h3>
-                <p class="font-body text-white/80 leading-relaxed mb-5 text-sm">
+                <p class="font-body text-white/80 leading-relaxed mb-5 text-sm" itemprop="description">
                   {{ service.description }}
                 </p>
 
@@ -98,8 +103,8 @@ const fanRotations = [-6, -3, 0, 3, 6]
 const fanOffsets = [20, 8, 0, 8, 20]
 
 const allServicesData = computed(() => {
-  const raw = tm('services.items')
-  if (!Array.isArray(raw)) return []
+  const raw = tm('services.items') as any
+  if (!raw || !Array.isArray(raw)) return []
   return raw.map((item: any) => ({
     title: rt(item.title),
     description: rt(item.description),
