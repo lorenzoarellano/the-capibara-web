@@ -52,6 +52,20 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' },
         { rel: 'dns-prefetch', href: 'https://fonts.googleapis.com' },
       ],
+      script: [
+        {
+          innerHTML: `
+            if ('serviceWorker' in navigator) {
+              navigator.serviceWorker.getRegistrations().then(function(registrations) {
+                for (let registration of registrations) {
+                  registration.unregister();
+                }
+              });
+            }
+          `,
+          type: 'text/javascript'
+        }
+      ]
     },
   },
 
@@ -105,6 +119,7 @@ export default defineNuxtConfig({
     },
     // Cache de larga duración para activos estáticos (ahorro ~8MB)
     routeRules: {
+      '/index.html': { redirect: { to: '/', statusCode: 301 } },
       '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
       '/**/*.webp': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
       '/**/*.jpg': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
