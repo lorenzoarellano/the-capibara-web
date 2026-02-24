@@ -49,7 +49,7 @@ const localePath = useLocalePath()
 
 const { data: posts, pending } = await useAsyncData(
   `home-posts-${locale.value}`,
-  () => fetchPosts({ perPage: 6 }),
+  () => fetchPosts({ perPage: 6, lang: locale.value }),
   { watch: [locale] }
 )
 

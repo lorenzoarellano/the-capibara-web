@@ -33,7 +33,7 @@
 
       <!-- Desktop Actions -->
       <div class="hidden lg:flex items-center gap-2">
-        <LanguageSwitcher />
+        <LanguageSwitcher v-if="!isNewsPage" />
         <ThemeToggle />
         <button class="btn-primary text-sm !px-6 !py-2.5" @click="handleSchedule">
           {{ $t('nav.schedule') }}
@@ -72,7 +72,7 @@
           </a>
           <hr class="border-capibara-200 dark:border-capibara-700" />
           <div class="flex items-center justify-between">
-            <LanguageSwitcher />
+            <LanguageSwitcher v-if="!isNewsPage" />
             <ThemeToggle />
           </div>
           <button class="btn-primary text-sm w-full" @click="handleSchedule(); mobileOpen = false">
@@ -87,22 +87,36 @@
 <script setup lang="ts">
 import { Menu, X } from 'lucide-vue-next'
 import { useWhatsappNotification } from '~/composables/useWhatsappNotification'
+import { useI18n, useLocalePath } from '#imports'
+
+const { t, locale } = useI18n()
+const localePath = useLocalePath()
 
 const { openWhatsApp } = useWhatsappNotification()
 const mobileOpen = ref(false)
 const scrolled = ref(false)
 let lastScrollY = 0
 
-const navItems = [
-  { key: 'services', id: 'servicios' },
-  { key: 'projects', id: 'proyectos' },
-  { key: 'training', id: 'capacitacion' },
-  { key: 'news', id: 'noticias' },
-  { key: 'contact', id: 'contacto' },
-]
+const navItems = computed(() => {
+  const items = [
+    { key: 'services', id: 'servicios' },
+    { key: 'projects', id: 'proyectos' },
+    { key: 'training', id: 'capacitacion' },
+    { key: 'contact', id: 'contacto' },
+  ]
+  
+  if (locale.value === 'es') {
+    // Insert news before contact
+    items.splice(3, 0, { key: 'news', id: 'noticias' })
+  }
+  
+  return items
+})
 
 const router = useRouter()
 const route = useRoute()
+
+const isNewsPage = computed(() => route.path.includes('/news'))
 
 function scrollToSection(id: string) {
   const el = document.getElementById(id)

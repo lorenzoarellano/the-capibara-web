@@ -1,6 +1,7 @@
 export interface WPPost {
     id: number
     date: string
+    link: string
     slug: string
     title: {
         rendered: string
@@ -33,6 +34,36 @@ export interface WPCategory {
     count: number
 }
 
+export const decodeHtml = (raw: string) => {
+    if (!raw) return ''
+
+    // 1. Strip HTML tags
+    let text = raw.replace(/<[^>]*>?/gm, '')
+
+    // 2. Decode numeric entities like &#8220;
+    text = text.replace(/&#(\d+);/g, (_, dec) => String.fromCharCode(dec))
+
+    // 3. Decode common named entities
+    const entities: Record<string, string> = {
+        '&quot;': '"',
+        '&amp;': '&',
+        '&lt;': '<',
+        '&gt;': '>',
+        '&nbsp;': ' ',
+        '&hellip;': '...',
+        '&iexcl;': '¡',
+        '&iquest;': '¿',
+        '&copy;': '©',
+        '&reg;': '®'
+    }
+
+    Object.entries(entities).forEach(([entity, char]) => {
+        text = text.replace(new RegExp(entity, 'g'), char)
+    })
+
+    return text.trim()
+}
+
 export const useWordPress = () => {
     const { locale } = useI18n()
     const baseUrl = 'https://news.thecapibaraweb.com.mx/wp-json/wp/v2'
@@ -46,13 +77,12 @@ export const useWordPress = () => {
         perPage?: number
         category?: number
         slug?: string
+        lang?: string
     } = {}) => {
-        const { page = 1, perPage = 6, category, slug } = options
-        const lang = getLanguageParam()
+        const { page = 1, perPage = 6, category, slug, lang: forcedLang } = options
+        const lang = forcedLang || getLanguageParam()
 
         const params: Record<string, any> = {
-            lang: lang,
-            polylang_lang: lang, // Redundant for some Polylang configurations
             _embed: 1,
             per_page: perPage,
         }
@@ -63,27 +93,26 @@ export const useWordPress = () => {
 
         const posts = await $fetch<WPPost[]>(`${baseUrl}/posts`, { params })
 
-        // Final safety filter: if the API returns posts from other languages, we filter them out.
-        // Polylang usually includes terminal terms or metadata, but as a fallback 
-        // we can check if the post has a 'lang' property in its response (common in Polylang REST)
-        return posts.filter(post => {
-            // @ts-ignore - Polylang might inject 'lang' or 'polylang_lang' directly in the root
-            const postLang = post.lang || post.polylang_lang
-            if (postLang) {
-                return postLang.startsWith(lang)
-            }
-            return true // Fallback if no lang meta is found (better to show than to hide everything)
-        })
+        // Simple filter: only show news if the site language is Spanish
+        if (lang === 'es') {
+            return posts
+        }
+
+        return []
     }
 
-    const fetchCategories = async () => {
-        const lang = getLanguageParam()
+    const fetchCategories = async (options: { lang?: string } = {}) => {
+        const lang = options.lang || getLanguageParam()
         const params = {
             lang: lang,
             polylang_lang: lang,
             hide_empty: true,
         }
-        return await $fetch<WPCategory[]>(`${baseUrl}/categories`, { params })
+        const categories = await $fetch<WPCategory[]>(`${baseUrl}/categories`, { params })
+
+        // Filter out default 'Uncategorized' category (ID 1 / slug variations)
+        const excludedSlugs = ['uncategorized', 'sin-categoria']
+        return categories.filter(cat => !excludedSlugs.includes(cat.slug) && cat.id !== 1)
     }
 
     const fetchPostBySlug = async (slug: string) => {
@@ -94,8 +123,6 @@ export const useWordPress = () => {
     const fetchRelatedPosts = async (categories: number[], excludeId: number) => {
         const lang = getLanguageParam()
         const params = {
-            lang: lang,
-            polylang_lang: lang,
             _embed: 1,
             per_page: 3,
             categories: categories.join(','),
@@ -103,14 +130,10 @@ export const useWordPress = () => {
         }
         const posts = await $fetch<WPPost[]>(`${baseUrl}/posts`, { params })
 
-        return posts.filter(post => {
-            // @ts-ignore
-            const postLang = post.lang || post.polylang_lang
-            if (postLang) {
-                return postLang.startsWith(lang)
-            }
-            return true
-        })
+        if (lang === 'es') {
+            return posts
+        }
+        return []
     }
 
     return {

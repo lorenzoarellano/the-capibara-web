@@ -134,6 +134,13 @@ const slug = route.params.slug as string
 const { fetchPostBySlug, fetchRelatedPosts } = useWordPress()
 const { openWhatsApp } = useWhatsappNotification()
 const localePath = useLocalePath()
+const switchLocalePath = useSwitchLocalePath()
+const { locale } = useI18n()
+
+// Redirect to Spanish if trying to access in English
+if (locale.value === 'en') {
+  await navigateTo(switchLocalePath('es'))
+}
 
 const { data: post } = await useAsyncData(`post-${slug}`, () => fetchPostBySlug(slug))
 
@@ -167,9 +174,9 @@ function handleSchedule() {
 
 // SEO
 useHead({
-  title: computed(() => post.value ? `${post.value.title.rendered} | The Capibara Web` : 'Noticia'),
+  title: computed(() => post.value ? `${decodeHtml(post.value.title.rendered)} | The Capibara Web` : 'Noticia'),
   meta: [
-    { name: 'description', content: computed(() => post.value?.excerpt.rendered.replace(/<[^>]*>?/gm, '')) }
+    { name: 'description', content: computed(() => post.value ? decodeHtml(post.value.excerpt.rendered) : '') }
   ]
 })
 </script>

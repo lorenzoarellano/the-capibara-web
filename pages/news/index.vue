@@ -9,26 +9,6 @@
           <p class="section-subtitle mt-4 gsap-reveal">{{ $t('news.subtitle') }}</p>
         </div>
 
-        <!-- Categories -->
-        <div class="flex flex-wrap justify-center gap-2 mb-12 gsap-reveal">
-          <button
-            @click="selectedCategory = undefined"
-            class="px-5 py-2 rounded-full text-sm font-body font-medium transition-all"
-            :class="!selectedCategory ? 'bg-capibara-900 text-white dark:bg-white dark:text-capibara-900' : 'bg-capibara-100 text-capibara-600 dark:bg-capibara-800 dark:text-capibara-400 hover:bg-capibara-200 dark:hover:bg-capibara-700'"
-          >
-            {{ $t('news.all') }}
-          </button>
-          <button
-            v-for="cat in categories"
-            :key="cat.id"
-            @click="selectedCategory = cat.id"
-            class="px-5 py-2 rounded-full text-sm font-body font-medium transition-all"
-            :class="selectedCategory === cat.id ? 'bg-capibara-900 text-white dark:bg-white dark:text-capibara-900' : 'bg-capibara-100 text-capibara-600 dark:bg-capibara-800 dark:text-capibara-400 hover:bg-capibara-200 dark:hover:bg-capibara-700'"
-          >
-            {{ cat.name }}
-          </button>
-        </div>
-
         <!-- Grid -->
         <div v-if="pending" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <div v-for="i in 6" :key="i" class="glass-card aspect-[4/5] animate-pulse bg-capibara-100/50 dark:bg-capibara-800/50" />
@@ -60,7 +40,7 @@
             {{ page }}
           </span>
           <button
-            :disabled="pending || (posts && posts.length < 9)"
+            :disabled="pending || !!(posts && posts.length < 9)"
             @click="page++"
             class="p-2 rounded-xl glass-card hover:bg-capibara-100 dark:hover:bg-capibara-800 disabled:opacity-50 disabled:cursor-not-allowed transition-all"
           >
@@ -76,31 +56,33 @@
 import { ChevronLeft, ChevronRight } from 'lucide-vue-next'
 import { useWordPress } from '~/composables/useWordPress'
 
-const { fetchPosts, fetchCategories } = useWordPress()
+const { fetchPosts } = useWordPress()
 const { locale, t } = useI18n()
+const switchLocalePath = useSwitchLocalePath()
+
+// Redirect to Spanish if trying to access in English
+if (locale.value === 'en') {
+  await navigateTo(switchLocalePath('es'))
+}
 const localePath = useLocalePath()
 
 // Page state
 const page = ref(1)
-const selectedCategory = ref<number | undefined>(undefined)
 
-// Reset page on category or locale change
-watch([selectedCategory, locale], () => {
+// Reset page on locale change
+watch([locale], () => {
   page.value = 1
 })
 
-// Fetch Categories
-const { data: categories } = await useAsyncData('news-categories', () => fetchCategories())
-
 // Fetch Posts
 const { data: posts, pending } = await useAsyncData(
-  `news-posts-${locale.value}-p${page.value}-c${selectedCategory.value || 'all'}`,
-  () => fetchPosts({ 
-    page: page.value, 
-    perPage: 9, 
-    category: selectedCategory.value 
+  `news-posts-${locale.value}-${page.value}`,
+  () => fetchPosts({
+    page: page.value,
+    perPage: 9,
+    lang: locale.value
   }),
-  { watch: [page, selectedCategory, locale] }
+  { watch: [page, locale] }
 )
 
 // SEO

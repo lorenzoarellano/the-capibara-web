@@ -59,7 +59,7 @@
 
 <script setup lang="ts">
 import { ArrowRight } from 'lucide-vue-next'
-import type { WPPost } from '~/composables/useWordPress'
+import { decodeHtml } from '~/composables/useWordPress'
 
 const { locale } = useI18n()
 const localePath = useLocalePath()
@@ -78,14 +78,7 @@ const category = computed(() => {
 })
 
 const strippedExcerpt = computed(() => {
-  const raw = props.post.excerpt.rendered || ''
-  // Strip HTML and decode basic entities
-  return raw
-    .replace(/<[^>]*>?/gm, '')
-    .replace(/&hellip;/g, '...')
-    .replace(/&nbsp;/g, ' ')
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
+  return decodeHtml(props.post.excerpt.rendered)
 })
 
 const formattedDate = computed(() => {

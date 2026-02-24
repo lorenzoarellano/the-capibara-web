@@ -2,7 +2,7 @@
   <div>
     <HeroSection />
     <ServicesSection />
-    <NewsSection />
+    <NewsSection v-if="locale === 'es'" />
     <ShowcaseSection />
     <TrainingSection />
     <BeforeAfterSection />
@@ -17,6 +17,9 @@ const { t, locale } = useI18n()
 // SEO Meta
 useHead({
   title: t('meta.title'),
+  htmlAttrs: {
+    lang: locale.value
+  },
   meta: [
     { name: 'description', content: t('meta.description') },
     { property: 'og:title', content: t('meta.title') },

@@ -6,7 +6,7 @@ export default defineNuxtConfig({
 
   app: {
     head: {
-      htmlAttrs: { lang: 'es' },
+      // htmlAttrs will be handled by useHead in index.vue or globally
       title: 'The Capibara Web | Software Engineering & AI Solutions',
       meta: [
         { charset: 'utf-8' },
@@ -83,11 +83,7 @@ export default defineNuxtConfig({
     defaultLocale: 'es',
     lazy: true,
     strategy: 'prefix_except_default',
-    detectBrowserLanguage: {
-      useCookie: true,
-      cookieKey: 'i18n_lang',
-      redirectOn: 'root',
-    },
+    detectBrowserLanguage: false,
     bundle: {
       optimizeTranslationDirective: false,
     },
