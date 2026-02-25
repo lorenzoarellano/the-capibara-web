@@ -92,13 +92,29 @@ useHead({
 
 const { $gsap } = useNuxtApp()
 
-onMounted(() => {
+function animateRevealElements() {
   const gsap = $gsap as typeof import('gsap').gsap
-  gsap.utils.toArray<HTMLElement>('.gsap-reveal').forEach((el, i) => {
-    gsap.fromTo(el, { opacity: 0, y: 20 }, {
-      opacity: 1, y: 0, duration: 0.6, delay: i * 0.05,
-      scrollTrigger: { trigger: el, start: 'top 95%' }
+  nextTick(() => {
+    gsap.utils.toArray<HTMLElement>('.gsap-reveal').forEach((el, i) => {
+      // Skip elements already animated
+      if (el.dataset.gsapDone) return
+      el.dataset.gsapDone = '1'
+      gsap.fromTo(el, { opacity: 0, y: 20 }, {
+        opacity: 1, y: 0, duration: 0.6, delay: i * 0.05,
+        scrollTrigger: { trigger: el, start: 'top 95%' }
+      })
     })
   })
+}
+
+// Re-animate when posts load or change
+watch([posts, pending], () => {
+  if (!pending.value && posts.value) {
+    animateRevealElements()
+  }
+})
+
+onMounted(() => {
+  animateRevealElements()
 })
 </script>
