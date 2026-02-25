@@ -97,25 +97,25 @@
       radial-gradient(ellipse at 50% 100%, rgba(23, 190, 187, 0.03) 0%, transparent 50%);
   }
 
-  /* Primary CTA Button — Gradiente teal → plum */
+  /* Primary CTA Button — Gradiente teal → plum → red (mismo que gradient-text) */
   .btn-primary {
     @apply inline-flex items-center justify-center gap-2 px-8 py-4 font-body font-semibold text-white rounded-full shadow-xl transition-all duration-300 hover:scale-105 active:scale-[0.98] cursor-pointer;
-    background: linear-gradient(135deg, #0E7C7B, #4B1D3F);
+    background: linear-gradient(135deg, #0E7C7B 0%, #4B1D3F 60%, #D62246 100%);
     box-shadow: 0 4px 20px rgba(14, 124, 123, 0.3);
   }
 
   .btn-primary:hover {
-    box-shadow: 0 8px 30px rgba(14, 124, 123, 0.4);
+    box-shadow: 0 8px 30px rgba(214, 34, 70, 0.35);
   }
 
   .dark .btn-primary {
-    background: linear-gradient(135deg, #17BEBB, #0E7C7B);
+    background: linear-gradient(135deg, #0E7C7B 0%, #4B1D3F 60%, #D62246 100%);
     box-shadow: 0 4px 20px rgba(23, 190, 187, 0.25);
     @apply text-white;
   }
 
   .dark .btn-primary:hover {
-    box-shadow: 0 8px 30px rgba(23, 190, 187, 0.35);
+    box-shadow: 0 8px 30px rgba(214, 34, 70, 0.35);
   }
 
   /* Secondary CTA Button */

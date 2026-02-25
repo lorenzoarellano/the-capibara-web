@@ -100,16 +100,35 @@
               />
             </div>
 
-            <!-- Submit -->
-            <button
-              type="submit"
-              :disabled="sending || isSpam"
-              class="btn-primary w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
-            >
-              <Send :size="18" v-if="!sending" />
-              <Loader2 :size="18" class="animate-spin" v-else />
-              {{ sending ? $t('contact.form.sending') : $t('contact.form.submit') }}
-            </button>
+            <!-- Submit / Loader -->
+            <div class="relative min-h-[48px] flex items-center">
+              <Transition
+                enter-active-class="transition duration-500 ease-out"
+                enter-from-class="opacity-0 scale-90"
+                enter-to-class="opacity-100 scale-100"
+                leave-active-class="transition duration-300 ease-in"
+                leave-from-class="opacity-100 scale-100"
+                leave-to-class="opacity-0 scale-90"
+                mode="out-in"
+              >
+                <button
+                  v-if="!sending"
+                  type="submit"
+                  :disabled="isSpam"
+                  class="btn-primary w-full sm:w-auto disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
+                >
+                  <Send :size="18" />
+                  {{ $t('contact.form.submit') }}
+                </button>
+                <div v-else class="flex items-center justify-center w-full sm:w-auto">
+                  <img
+                    :src="$colorMode.value === 'dark' ? '/contact-dark.webp' : '/contact.webp'"
+                    alt="Enviando mensaje..."
+                    class="h-20 w-auto object-contain"
+                  />
+                </div>
+              </Transition>
+            </div>
 
             <!-- Status Messages -->
             <Transition
@@ -192,7 +211,7 @@
 </template>
 
 <script setup lang="ts">
-import { Send, Clock, Phone, MapPin, ChevronDown, Loader2 } from 'lucide-vue-next'
+import { Send, Clock, Phone, MapPin, ChevronDown } from 'lucide-vue-next'
 import { useWhatsappNotification } from '~/composables/useWhatsappNotification'
 
 const { openWhatsApp, sendNotification } = useWhatsappNotification()
@@ -247,16 +266,22 @@ async function handleSubmit() {
   status.value = 'idle'
   errorMessage.value = ''
 
+  // Minimum 4s delay so the loader animation plays
+  const minDelay = new Promise(resolve => setTimeout(resolve, 4000))
+
   try {
-    await $fetch('/api/contact', {
-      method: 'POST',
-      body: {
-        name: form.name.substring(0, 50),
-        email: form.email.substring(0, 100),
-        phone: `${countryCode.value} ${form.phone}`,
-        message: form.message.substring(0, 500),
-      },
-    })
+    const [response] = await Promise.all([
+      $fetch('/api/contact', {
+        method: 'POST',
+        body: {
+          name: form.name.substring(0, 50),
+          email: form.email.substring(0, 100),
+          phone: `${countryCode.value} ${form.phone}`,
+          message: form.message.substring(0, 500),
+        },
+      }),
+      minDelay,
+    ])
     status.value = 'success'
     form.name = ''
     form.email = ''
@@ -268,6 +293,8 @@ async function handleSubmit() {
       status.value = 'idle'
     }, 5000)
   } catch (err: any) {
+    // Wait for minimum delay even on error
+    await minDelay.catch(() => {})
     status.value = 'error'
     // Extract message from Nuxt/h3 error response
     errorMessage.value = err.data?.message || t('contact.form.error')
