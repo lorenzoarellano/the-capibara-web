@@ -128,6 +128,9 @@ export default defineNuxtConfig({
       '/**/*.jpg': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
       '/**/*.png': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
       '/**/*.woff2': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
+      // SEO: Asegurar que las rutas de noticias nunca envíen X-Robots-Tag: noindex
+      '/news/**': { headers: { 'X-Robots-Tag': 'index, follow' } },
+      '/news': { headers: { 'X-Robots-Tag': 'index, follow' } },
     },
   },
 

@@ -154,8 +154,8 @@ if (locale.value === 'en') {
   await navigateTo(switchLocalePath('es'))
 }
 
-// Fetch Post - Opción Lazy para evitar bloqueo de página
-const { data: post, pending: postPending } = useLazyAsyncData(`post-${slug}`, () => fetchPostBySlug(slug), { server: true })
+// Fetch Post - useAsyncData (NO lazy) para que SSR espere los datos y Google indexe contenido real
+const { data: post, pending: postPending } = await useAsyncData(`post-${slug}`, () => fetchPostBySlug(slug))
 
 const { data: relatedPosts, pending: relatedPending } = useLazyAsyncData(`related-${slug}`, () => {
   if (!post.value) return Promise.resolve([])
@@ -185,12 +185,21 @@ function handleSchedule() {
   openWhatsApp()
 }
 
-// SEO
+// SEO — robots explícito + meta completa para garantizar indexación
+useSeoMeta({
+  title: () => post.value ? `${decodeHtml(post.value.title.rendered)} | The Capibara Web` : 'Noticia | The Capibara Web',
+  ogTitle: () => post.value ? decodeHtml(post.value.title.rendered) : 'Noticia',
+  description: () => post.value ? decodeHtml(post.value.excerpt.rendered) : '',
+  ogDescription: () => post.value ? decodeHtml(post.value.excerpt.rendered) : '',
+  ogImage: () => featuredImage.value,
+  ogType: 'article',
+  robots: 'index, follow, max-image-preview:large',
+})
+
 useHead({
-  title: computed(() => post.value ? `${decodeHtml(post.value.title.rendered)} | The Capibara Web` : 'Noticia'),
-  meta: [
-    { name: 'description', content: computed(() => post.value ? decodeHtml(post.value.excerpt.rendered) : '') }
-  ]
+  link: [
+    { rel: 'canonical', href: `https://thecapibaraweb.com.mx/news/${slug}` },
+  ],
 })
 </script>
 

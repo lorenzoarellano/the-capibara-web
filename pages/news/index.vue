@@ -85,9 +85,19 @@ const { data: posts, pending } = useLazyAsyncData(
   { watch: [page, locale], server: true }
 )
 
-// SEO
-useHead({
+// SEO — robots explícito para garantizar indexación
+useSeoMeta({
   title: `${t('news.title')} | The Capibara Web`,
+  description: t('news.subtitle'),
+  ogTitle: t('news.title'),
+  ogDescription: t('news.subtitle'),
+  robots: 'index, follow, max-image-preview:large',
+})
+
+useHead({
+  link: [
+    { rel: 'canonical', href: 'https://thecapibaraweb.com.mx/news' },
+  ],
 })
 
 const { $gsap } = useNuxtApp()
