@@ -150,6 +150,97 @@ Three soft radial ellipses (corners and bottom center), `transparent` at 50%:
 
 ---
 
+### Liquid Glass (target style for cards in new content)
+
+> **Status:** this is the **intended** card style for Remotion and any new content. The live website still uses the plain `.glass-card` above (translucent fill + blur + gradient border). Liquid Glass is **not yet implemented in the site code**. When producing content, use Liquid Glass for every card. When an agent edits the website, do not assume it exists.
+
+Liquid Glass builds on the glass card and adds the optical behaviour of real glass: a lit edge, thickness, and a background that looks bent and vivid behind the surface.
+
+**Ingredients (all required for the look)**
+
+| Layer | Spec |
+|---|---|
+| Fill | Light: `rgba(255,255,255,0.25)`, dark: `rgba(255,255,255,0.06)` |
+| Backdrop filter | `blur(24px) saturate(180%) brightness(1.08)` (dark: `brightness(1.15)`) |
+| Refraction (optional, video/Chromium) | SVG `feTurbulence` + `feDisplacementMap`, `scale` 20–40, applied through `backdrop-filter: url(#liquid)` |
+| Specular edge | 1px inner highlight on the top/left edge: `inset 1px 1px 0 rgba(255,255,255,0.55)` (dark: `0.25`) |
+| Opposite edge | `inset -1px -1px 0 rgba(255,255,255,0.12)` |
+| Thickness / inner glow | `inset 0 0 24px rgba(255,255,255,0.10)` |
+| Gradient border | Keep the brand 1px gradient border (teal → plum → crimson) at opacity `0.6` |
+| Outer shadow | `0 8px 32px rgba(1,1,1,0.12)` (dark: `rgba(0,0,0,0.45)`) plus the brand colored hover glow |
+| Sheen | Diagonal highlight: `linear-gradient(120deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 40%)` overlaid at `opacity 0.5` |
+| Radius | `32px` (same as `rounded-4xl`) |
+
+**CSS reference**
+
+```css
+.liquid-glass {
+  position: relative;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(24px) saturate(180%) brightness(1.08);
+  -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.08);
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.55),
+    inset -1px -1px 0 rgba(255, 255, 255, 0.12),
+    inset 0 0 24px rgba(255, 255, 255, 0.10),
+    0 8px 32px rgba(1, 1, 1, 0.12);
+  overflow: hidden;
+}
+
+/* Diagonal sheen */
+.liquid-glass::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(120deg, rgba(255,255,255,0.35) 0%, rgba(255,255,255,0) 40%);
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.dark .liquid-glass {
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(24px) saturate(180%) brightness(1.15);
+  -webkit-backdrop-filter: blur(24px) saturate(180%) brightness(1.15);
+  box-shadow:
+    inset 1px 1px 0 rgba(255, 255, 255, 0.25),
+    inset -1px -1px 0 rgba(255, 255, 255, 0.06),
+    inset 0 0 24px rgba(255, 255, 255, 0.05),
+    0 8px 32px rgba(0, 0, 0, 0.45);
+}
+```
+
+**Optional refraction filter (SVG)**
+
+```html
+<svg width="0" height="0" aria-hidden="true">
+  <filter id="liquid" x="0" y="0" width="100%" height="100%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.008 0.008" numOctaves="2" seed="3" result="noise" />
+    <feGaussianBlur in="noise" stdDeviation="2" result="map" />
+    <feDisplacementMap in="SourceGraphic" in2="map" scale="30" xChannelSelector="R" yChannelSelector="G" />
+  </filter>
+</svg>
+```
+
+Apply it with `backdrop-filter: url(#liquid) blur(12px) saturate(180%)`. This only works in Chromium-based renderers, which includes Remotion. It does not work in Safari or Firefox, so keep the plain blur/saturate version as the website fallback.
+
+**Behavior and motion**
+
+- Hover: lift `translateY(-4px)`, raise the sheen opacity `0.5 → 0.8`, move the sheen angle slowly (`120deg → 135deg`, `400ms`, ease-out).
+- In video, animate the sheen sliding across the card (`background-position` or a moving gradient) over `2–4s`, `sine.inOut`, so the glass appears to catch light.
+- Cards must sit over a **colorful, moving background** (mesh aura, teal/plum/crimson/mint glows, or imagery). Over a flat white or black background the effect disappears.
+
+**Rules**
+
+- Use Liquid Glass for **cards, panels, nav bars and pills**. Do not use it for full-page backgrounds or body text blocks.
+- Never stack more than two glass layers. Nested glass loses clarity.
+- Text on glass: keep contrast AA. In light mode use `capibara-900`, in dark mode `capibara-100`.
+- Keep the brand palette: only teal, plum, crimson and mint tint the glass, never flat saturated fills.
+- Always keep the 32px radius and the 1px gradient border so it still reads as The Capibara Web.
+
+---
+
 ## 6. Shadows & Glows
 
 Resting state: soft or none. On hover, cards emit a **multi-layer colored glow** (teal → bright teal → plum → crimson → mint, getting larger and fainter):
@@ -297,7 +388,7 @@ export const capibara = {
 ### Do
 - Use dark background `#010101` with teal/mint glows and gradient text.
 - Cinzel for titles, Open Sans for everything else.
-- Glass cards with 32px radius and gradient 1px borders.
+- Liquid Glass cards (see section 5) with 32px radius and gradient 1px borders, over a colorful moving background.
 - Slow, smooth motion (`power3.out`, `sine.inOut`), 0.8s reveals with 0.1s stagger.
 - Add the grain overlay at 3% opacity.
 
