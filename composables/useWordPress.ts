@@ -34,6 +34,21 @@ export interface WPCategory {
     count: number
 }
 
+import DOMPurify from 'isomorphic-dompurify'
+
+const clean = (html: string) =>
+    DOMPurify.sanitize(html || '', {
+        FORBID_TAGS: ['style', 'form', 'input', 'button', 'textarea', 'select'],
+        FORBID_ATTR: ['style'],
+    })
+
+const sanitizePost = (post: WPPost): WPPost => ({
+    ...post,
+    title: { rendered: clean(post.title?.rendered) },
+    content: { rendered: clean(post.content?.rendered) },
+    excerpt: { rendered: clean(post.excerpt?.rendered) },
+})
+
 export const decodeHtml = (raw: string) => {
     if (!raw) return ''
 
@@ -95,7 +110,7 @@ export const useWordPress = () => {
 
         // Simple filter: only show news if the site language is Spanish
         if (lang === 'es') {
-            return posts
+            return posts.map(sanitizePost)
         }
 
         return []
@@ -131,7 +146,7 @@ export const useWordPress = () => {
         const posts = await $fetch<WPPost[]>(`${baseUrl}/posts`, { params })
 
         if (lang === 'es') {
-            return posts
+            return posts.map(sanitizePost)
         }
         return []
     }

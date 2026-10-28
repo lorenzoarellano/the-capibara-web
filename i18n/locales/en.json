@@ -297,7 +297,8 @@
     "sections": {
       "services": "Services",
       "company": "Company",
-      "legal": "Legal"
+      "legal": "Legal",
+      "social": "Follow us"
     },
     "links": {
       "webdev": "Web Design & Development",

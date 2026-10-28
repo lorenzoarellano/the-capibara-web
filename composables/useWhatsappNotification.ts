@@ -22,10 +22,7 @@ export function useWhatsappNotification() {
       await fetch('/api/notify', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          number: '6181835957',
-          message: mensaje,
-        }),
+        body: JSON.stringify({ button: buttonName }),
       })
       localStorage.setItem(RATE_LIMIT_KEY, Date.now().toString())
     } catch (error) {

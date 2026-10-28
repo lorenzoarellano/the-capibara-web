@@ -123,6 +123,29 @@ export default defineNuxtConfig({
       '/service-worker.js': { redirect: { to: '/', statusCode: 301 } },
       '/sw.js': { redirect: { to: '/', statusCode: 301 } },
       '/workbox-*.js': { redirect: { to: '/', statusCode: 301 } },
+      '/**': {
+        headers: {
+          'X-Frame-Options': 'DENY',
+          'X-Content-Type-Options': 'nosniff',
+          'Referrer-Policy': 'strict-origin-when-cross-origin',
+          'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), payment=()',
+          'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+          'Cross-Origin-Opener-Policy': 'same-origin',
+          'Content-Security-Policy': [
+            "default-src 'self'",
+            "script-src 'self' 'unsafe-inline'",
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+            "font-src 'self' data: https://fonts.gstatic.com",
+            "img-src 'self' data: blob: https:",
+            "connect-src 'self' https://news.thecapibaraweb.com.mx",
+            "frame-src https://www.youtube.com https://www.youtube-nocookie.com",
+            "frame-ancestors 'none'",
+            "base-uri 'self'",
+            "form-action 'self'",
+            "object-src 'none'",
+          ].join('; '),
+        },
+      },
       '/_nuxt/**': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
       '/**/*.webp': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
       '/**/*.jpg': { headers: { 'cache-control': 'public, max-age=31536000, immutable' } },
@@ -136,11 +159,7 @@ export default defineNuxtConfig({
 
   compatibilityDate: '2024-12-01',
   runtimeConfig: {
-    smtpHost: process.env.SMTP_HOST,
-    smtpPort: process.env.SMTP_PORT,
-    smtpUser: process.env.SMTP_USER,
-    smtpPass: process.env.SMTP_PASS,
-    contactEmail: process.env.CONTACT_EMAIL,
     webcybert: process.env.WEBCYBERT,
+    notifyNumber: process.env.NOTIFY_NUMBER,
   },
 })
